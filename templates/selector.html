@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select a Course</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* --- Solar System Animation (Light Theme) --- */
+        .solar-system-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .solar-system {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100vmax;
+            height: 100vmax;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .sun {
+            width: 8vmax;
+            height: 8vmax;
+            background-color: #facc15; /* yellow-400 */
+            border-radius: 50%;
+            box-shadow: 0 0 20px #fde047, 0 0 60px #f59e0b, 0 0 120px #f59e0b;
+        }
+        .orbit {
+            position: absolute;
+            border: 1px solid rgba(148, 163, 184, 0.5); /* Lighter, solid slate-400 */
+            border-radius: 50%;
+            animation-name: revolve;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+        .planet {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            border-radius: 50%;
+        }
+        
+        .mercury-orbit { width: 12vmax; height: 12vmax; animation-duration: 5s; }
+        .mercury { width: 0.8vmax; height: 0.8vmax; background-color: #a8a29e; /* stone-400 */ }
+
+        .venus-orbit { width: 18vmax; height: 18vmax; animation-duration: 8s; }
+        .venus { width: 1.2vmax; height: 1.2vmax; background-color: #f59e0b; /* amber-500 */ }
+
+        .earth-orbit { width: 26vmax; height: 26vmax; animation-duration: 12s; }
+        .earth { width: 1.4vmax; height: 1.4vmax; background-color: #3b82f6; /* blue-500 */ }
+
+        .mars-orbit { width: 35vmax; height: 35vmax; animation-duration: 20s; }
+        .mars { width: 1vmax; height: 1vmax; background-color: #ef4444; /* red-500 */ }
+
+        .jupiter-orbit { width: 50vmax; height: 50vmax; animation-duration: 35s; }
+        .jupiter { width: 2.8vmax; height: 2.8vmax; background-color: #d2a67d; }
+
+        .saturn-orbit { width: 65vmax; height: 65vmax; animation-duration: 50s; }
+        .saturn {
+            width: 2.4vmax;
+            height: 2.4vmax;
+            background-color: #e0c58f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .ring {
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            border: 0.2vmax solid rgba(168, 162, 158, 0.7); /* stone-400 with opacity */
+            border-radius: 50%;
+            transform: rotate(45deg) scaleY(0.3);
+        }
+
+        .uranus-orbit { width: 80vmax; height: 80vmax; animation-duration: 70s; }
+        .uranus { width: 2vmax; height: 2vmax; background-color: #a5f3fc; /* cyan-200 */ }
+        
+        .neptune-orbit { width: 95vmax; height: 95vmax; animation-duration: 90s; }
+        .neptune { width: 1.9vmax; height: 1.9vmax; background-color: #60a5fa; /* blue-400 */ }
+
+        @keyframes revolve {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 flex items-center justify-center min-h-screen font-sans p-8 overflow-hidden">
+    
+    <div class="solar-system-background">
+        <div class="solar-system">
+            <div class="sun"></div>
+            <div class="orbit mercury-orbit"><div class="planet mercury"></div></div>
+            <div class="orbit venus-orbit"><div class="planet venus"></div></div>
+            <div class="orbit earth-orbit"><div class="planet earth"></div></div>
+            <div class="orbit mars-orbit"><div class="planet mars"></div></div>
+            <div class="orbit jupiter-orbit"><div class="planet jupiter"></div></div>
+            <div class="orbit saturn-orbit"><div class="planet saturn"><div class="ring"></div></div></div>
+            <div class="orbit uranus-orbit"><div class="planet uranus"></div></div>
+            <div class="orbit neptune-orbit"><div class="planet neptune"></div></div>
+        </div>
+    </div>
+    
+    <div class="relative z-10 text-center max-w-4xl mx-auto">
+        <h1 class="text-5xl font-bold text-slate-800 mb-4">Spatial Learn</h1>
+        <p class="text-xl text-slate-600 mb-12">IIT Madras BS Semester 10</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <a href="/course/business_analytics" class="course-card bg-white/60 backdrop-blur-sm border border-slate-200 p-8 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-in-out flex flex-col items-center text-center">
+                <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-6">
+                    <i data-lucide="bar-chart-3" class="w-8 h-8"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-slate-800 mb-2">Business Analytics</h2>
+                <p class="text-slate-500">Course ID: BSMS2002<br>Course Credits: 4</p>
+            </a>
+            <a href="/course/machine_learning" class="course-card bg-white/60 backdrop-blur-sm border border-slate-200 p-8 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-in-out flex flex-col items-center text-center">
+                <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mb-6">
+                    <i data-lucide="brain-circuit" class="w-8 h-8"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-slate-800 mb-2">Machine Learning Practices</h2>
+                <p class="text-slate-500">Course ID: BSCS2008<br>Course Credits: 4</p>
+            </a>
+        </div>
+    </div>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
