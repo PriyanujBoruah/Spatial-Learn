@@ -16,7 +16,7 @@
 
         <aside id="sidebar" class="absolute inset-y-0 left-0 bg-white border-r p-6 w-72 overflow-y-auto transform -translate-x-full md:relative md:translate-x-0 z-30 transition-transform duration-300 ease-in-out">
             <h1 class="text-2xl font-bold mb-1 text-slate-800">{{ curriculum.course_title }}</h1>
-            <a href="/" class="text-sm text-blue-700 mb-6 block">&larr; Back to Courses</a>
+            <a href="/" class="text-sm text-blue-600 hover:underline mb-6 block">&larr; Back to Courses</a>
             <nav id="sidebar-nav">
                 {% for week in curriculum.weeks %}
                     {% set week_index = loop.index %}
@@ -69,7 +69,7 @@
                 <div id="content-display" class="relative bg-white p-6 md:p-8 min-h-[70vh]">
                     <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-4" id="topic-title">Select a lecture to begin</h2>
                     
-                    <div id="loading-overlay" class="fixed inset-0 bg-white flex items-center justify-center z-50 hidden">
+                    <div id="loading-overlay" class="fixed inset-0 bg-black flex items-center justify-center z-50 hidden">
                         <div id="loader" class="flex flex-col items-center justify-center space-y-8" style="min-height: 450px;">
                             <div class="solar-system-container">
                                 <div class="solar-system">
@@ -88,7 +88,7 @@
                                     <div class="orbit neptune-orbit"><div class="planet neptune"></div></div>
                                 </div>
                             </div>
-                            <p class="text-blue-700 font-large text-lg" style="padding-top: 25px;">Module creation in progress</p>
+                            <p class="text-white font-medium text-lg">Generating your learning module...</p>
                         </div>
                     </div>
 
@@ -102,23 +102,35 @@
         <i data-lucide="message-circle" class="w-8 h-8"></i>
     </button>
 
-    <div id="chat-window" class="fixed bottom-28 right-8 w-96 bg-white rounded-2xl shadow-2xl hidden flex flex-col h-[70vh] max-h-[600px] z-40">
-        <div class="p-4 bg-blue-600 text-white rounded-t-2xl flex justify-between items-center">
+    <div id="chat-window" class="fixed inset-0 bg-white hidden flex flex-col z-40 md:inset-auto md:bottom-28 md:right-8 md:w-96 md:rounded-2xl md:shadow-2xl md:h-[70vh] md:max-h-[600px]">
+        <div class="p-4 bg-blue-600 text-white flex justify-between items-center md:rounded-t-2xl">
             <h3 class="font-bold text-lg">AI Assistant</h3>
+            <button id="chat-close" class="p-1 rounded-full hover:bg-blue-700">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
         </div>
         <div id="chat-messages" class="flex-1 p-4 overflow-y-auto">
-            <div class="mb-2 p-2 rounded-2xl bg-slate-200">
+            <div class="mb-2 p-3 rounded-lg max-w-xs break-words bg-slate-200 text-slate-800 self-start mr-auto">
                 <p class="text-sm">Hello! How can I help you clarify any concepts from the course?</p>
             </div>
         </div>
-        <div class="p-4 border-t bg-slate-50 rounded-b-2xl">
+        <div class="p-4 border-t bg-slate-50 md:rounded-b-2xl">
             <div class="flex items-center mb-2">
                 <input type="checkbox" id="lecture-context-checkbox" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
                 <label for="lecture-context-checkbox" class="ml-2 block text-sm text-slate-700">Use Context from Current Lecture</label>
             </div>
             <div class="flex">
-                <input type="text" id="chat-input" class="flex-1 border-slate-300 rounded-l-xl p-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Ask a question...">
-                <button id="chat-send" class="bg-blue-600 text-white px-4 rounded-r-xl hover:bg-blue-700 flex items-center justify-center">
+                 <div id="chat-input-container" class="relative flex-1">
+                    <input type="text" id="chat-input" class="w-full border-slate-300 rounded-l-md p-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Ask a question...">
+                    <div id="chat-loading-animation" class="absolute inset-0 bg-slate-200 rounded-l-md hidden items-center overflow-hidden">
+                        <div class="flex items-center justify-center w-full space-x-2">
+                            <div class="w-3 h-3 bg-blue-500 rounded-full animate-pulse" style="animation-delay: 0s;"></div>
+                            <div class="w-3 h-3 bg-blue-500 rounded-full animate-pulse" style="animation-delay: 0.2s;"></div>
+                            <div class="w-3 h-3 bg-blue-500 rounded-full animate-pulse" style="animation-delay: 0.4s;"></div>
+                        </div>
+                    </div>
+                </div>
+                <button id="chat-send" class="bg-blue-600 text-white px-4 rounded-r-md hover:bg-blue-700 flex items-center justify-center">
                     <i data-lucide="send" class="w-5 h-5"></i>
                 </button>
             </div>
@@ -135,81 +147,28 @@
         .lucide-icon { width: 18px; height: 18px; }
         
         /* --- Solar System Animation --- */
-        .solar-system-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding-top: 50px; /* Add padding to prevent clipping */
-        }
-        .solar-system {
-            position: relative;
-            width: 400px;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .sun {
-            width: 50px;
-            height: 50px;
-            background-color: #facc15; /* Tailwind yellow-400 */
-            border-radius: 50%;
-            box-shadow: 0 0 20px #fde047, 0 0 40px #f59e0b;
-        }
-        .orbit {
-            position: absolute;
-            border: 1px solid #94a3b8; /* Tailwind slate-400 */
-            border-radius: 50%;
-            animation-name: revolve;
-            animation-iteration-count: infinite;
-            animation-timing-function: linear;
-        }
-        .planet {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-            border-radius: 50%;
-        }
-        
+        .solar-system-container { display: flex; align-items: center; justify-content: center; padding-top: 50px; }
+        .solar-system { position: relative; width: 400px; height: 400px; display: flex; align-items: center; justify-content: center; }
+        .sun { width: 50px; height: 50px; background-color: #facc15; border-radius: 50%; box-shadow: 0 0 20px #fde047, 0 0 40px #f59e0b; }
+        .orbit { position: absolute; border: 1px solid #94a3b8; border-radius: 50%; animation-name: revolve; animation-iteration-count: infinite; animation-timing-function: linear; }
+        .planet { position: absolute; top: 50%; left: 0; transform: translateY(-50%); border-radius: 50%; }
         .mercury-orbit { width: 80px; height: 80px; animation-duration: 5s; }
-        .mercury { width: 8px; height: 8px; background-color: #a8a29e; /* stone-400 */ }
-
+        .mercury { width: 8px; height: 8px; background-color: #a8a29e; }
         .venus-orbit { width: 120px; height: 120px; animation-duration: 8s; }
-        .venus { width: 12px; height: 12px; background-color: #f59e0b; /* amber-500 */ }
-
+        .venus { width: 12px; height: 12px; background-color: #f59e0b; }
         .earth-orbit { width: 170px; height: 170px; animation-duration: 12s; }
-        .earth { width: 14px; height: 14px; background-color: #3b82f6; /* blue-500 */ }
-
+        .earth { width: 14px; height: 14px; background-color: #3b82f6; }
         .mars-orbit { width: 220px; height: 220px; animation-duration: 20s; }
-        .mars { width: 10px; height: 10px; background-color: #ef4444; /* red-500 */ }
-
+        .mars { width: 10px; height: 10px; background-color: #ef4444; }
         .jupiter-orbit { width: 290px; height: 290px; animation-duration: 35s; }
         .jupiter { width: 24px; height: 24px; background-color: #d2a67d; }
-
         .saturn-orbit { width: 360px; height: 360px; animation-duration: 50s; }
-        .saturn {
-            width: 20px;
-            height: 20px;
-            background-color: #e0c58f;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .ring {
-            position: absolute;
-            width: 150%;
-            height: 150%;
-            border: 2px solid #a8a29e; /* stone-400 */
-            border-radius: 50%;
-            transform: rotate(45deg) scaleY(0.3);
-        }
-
+        .saturn { width: 20px; height: 20px; background-color: #e0c58f; display: flex; align-items: center; justify-content: center; }
+        .ring { position: absolute; width: 150%; height: 150%; border: 2px solid #a8a29e; border-radius: 50%; transform: rotate(45deg) scaleY(0.3); }
         .uranus-orbit { width: 420px; height: 420px; animation-duration: 70s; }
-        .uranus { width: 16px; height: 16px; background-color: #a5f3fc; /* cyan-200 */ }
-        
+        .uranus { width: 16px; height: 16px; background-color: #a5f3fc; }
         .neptune-orbit { width: 480px; height: 480px; animation-duration: 90s; }
-        .neptune { width: 15px; height: 15px; background-color: #60a5fa; /* blue-400 */ }
+        .neptune { width: 15px; height: 15px; background-color: #60a5fa; }
 
         @keyframes revolve {
             from { transform: rotate(0deg); }
@@ -236,10 +195,12 @@
         const sidebarOverlay = document.getElementById('sidebar-overlay');
         const chatToggle = document.getElementById('chat-toggle');
         const chatWindow = document.getElementById('chat-window');
+        const chatClose = document.getElementById('chat-close'); // New close button
         const chatMessages = document.getElementById('chat-messages');
         const chatInput = document.getElementById('chat-input');
         const chatSend = document.getElementById('chat-send');
         const lectureContextCheckbox = document.getElementById('lecture-context-checkbox');
+        const chatLoadingAnimation = document.getElementById('chat-loading-animation');
 
         // --- INITIALIZATION ---
         lucide.createIcons();
@@ -256,18 +217,23 @@
             sidebarOverlay.classList.add('hidden');
         });
         
-        // Chatbot Toggle
-        chatToggle.addEventListener('click', () => {
-            chatWindow.classList.toggle('hidden');
-            if (!chatWindow.classList.contains('hidden')) {
+        // Chatbot Toggle Logic (New)
+        function toggleChatWindow() {
+            const isHidden = chatWindow.classList.toggle('hidden');
+            chatToggle.classList.toggle('hidden', !isHidden); // Hide toggle button when chat is open
+            if (!isHidden) {
                 chatInput.focus();
             }
-        });
+        }
+
+        chatToggle.addEventListener('click', toggleChatWindow);
+        chatClose.addEventListener('click', toggleChatWindow);
 
         // Chatbot Send Message
         chatSend.addEventListener('click', sendChatMessage);
         chatInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
                 sendChatMessage();
             }
         });
@@ -278,6 +244,10 @@
 
             appendMessage('user', message);
             chatInput.value = '';
+            
+            chatInput.classList.add('hidden');
+            chatLoadingAnimation.classList.remove('hidden');
+            chatLoadingAnimation.classList.add('flex');
             chatInput.disabled = true;
             chatSend.disabled = true;
             
@@ -303,6 +273,9 @@
                 console.error('Error fetching chatbot response:', error);
                 updateLastBotMessage('Sorry, I encountered an error. Please try again.');
             } finally {
+                chatInput.classList.remove('hidden');
+                chatLoadingAnimation.classList.add('hidden');
+                chatLoadingAnimation.classList.remove('flex');
                 chatInput.disabled = false;
                 chatSend.disabled = false;
                 chatInput.focus();
