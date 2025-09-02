@@ -70,7 +70,7 @@
                     <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-4" id="topic-title">Select a lecture to begin</h2>
                     
                     <div id="loading-overlay" class="fixed inset-0 bg-black flex items-center justify-center z-50 hidden">
-                        <div id="loader" class="flex flex-col items-center justify-center space-y-8" style="min-height: 450px;">
+                        <div id="loader" class="flex flex-col items-center justify-center space-y-8">
                             <div class="solar-system-container">
                                 <div class="solar-system">
                                     <div class="sun"></div>
@@ -110,7 +110,7 @@
             </button>
         </div>
         <div id="chat-messages" class="flex-1 p-4 overflow-y-auto">
-            <div class="mb-2 p-3 rounded-lg max-w-xs break-words bg-slate-200 text-slate-800 self-start mr-auto">
+             <div class="mb-2 p-3 rounded-lg max-w-xs break-words bg-slate-200 text-slate-800 self-start mr-auto">
                 <p class="text-sm">Hello! How can I help you clarify any concepts from the course?</p>
             </div>
         </div>
@@ -146,29 +146,54 @@
         .lecture-panel.open { max-height: 500px; }
         .lucide-icon { width: 18px; height: 18px; }
         
-        /* --- Solar System Animation --- */
+        /* --- Solar System Animation (Responsive) --- */
         .solar-system-container { display: flex; align-items: center; justify-content: center; padding-top: 50px; }
-        .solar-system { position: relative; width: 400px; height: 400px; display: flex; align-items: center; justify-content: center; }
-        .sun { width: 50px; height: 50px; background-color: #facc15; border-radius: 50%; box-shadow: 0 0 20px #fde047, 0 0 40px #f59e0b; }
         .orbit { position: absolute; border: 1px solid #94a3b8; border-radius: 50%; animation-name: revolve; animation-iteration-count: infinite; animation-timing-function: linear; }
         .planet { position: absolute; top: 50%; left: 0; transform: translateY(-50%); border-radius: 50%; }
-        .mercury-orbit { width: 80px; height: 80px; animation-duration: 5s; }
-        .mercury { width: 8px; height: 8px; background-color: #a8a29e; }
-        .venus-orbit { width: 120px; height: 120px; animation-duration: 8s; }
-        .venus { width: 12px; height: 12px; background-color: #f59e0b; }
-        .earth-orbit { width: 170px; height: 170px; animation-duration: 12s; }
-        .earth { width: 14px; height: 14px; background-color: #3b82f6; }
-        .mars-orbit { width: 220px; height: 220px; animation-duration: 20s; }
-        .mars { width: 10px; height: 10px; background-color: #ef4444; }
-        .jupiter-orbit { width: 290px; height: 290px; animation-duration: 35s; }
-        .jupiter { width: 24px; height: 24px; background-color: #d2a67d; }
-        .saturn-orbit { width: 360px; height: 360px; animation-duration: 50s; }
-        .saturn { width: 20px; height: 20px; background-color: #e0c58f; display: flex; align-items: center; justify-content: center; }
-        .ring { position: absolute; width: 150%; height: 150%; border: 2px solid #a8a29e; border-radius: 50%; transform: rotate(45deg) scaleY(0.3); }
-        .uranus-orbit { width: 420px; height: 420px; animation-duration: 70s; }
-        .uranus { width: 16px; height: 16px; background-color: #a5f3fc; }
-        .neptune-orbit { width: 480px; height: 480px; animation-duration: 90s; }
-        .neptune { width: 15px; height: 15px; background-color: #60a5fa; }
+        
+        /* Mobile-first styles */
+        .solar-system { position: relative; width: 250px; height: 250px; display: flex; align-items: center; justify-content: center; }
+        .sun { width: 25px; height: 25px; background-color: #facc15; border-radius: 50%; box-shadow: 0 0 10px #fde047, 0 0 20px #f59e0b; }
+        .mercury-orbit { width: 40px; height: 40px; animation-duration: 5s; }
+        .mercury { width: 4px; height: 4px; background-color: #a8a29e; }
+        .venus-orbit { width: 60px; height: 60px; animation-duration: 8s; }
+        .venus { width: 6px; height: 6px; background-color: #f59e0b; }
+        .earth-orbit { width: 85px; height: 85px; animation-duration: 12s; }
+        .earth { width: 7px; height: 7px; background-color: #3b82f6; }
+        .mars-orbit { width: 110px; height: 110px; animation-duration: 20s; }
+        .mars { width: 5px; height: 5px; background-color: #ef4444; }
+        .jupiter-orbit { width: 145px; height: 145px; animation-duration: 35s; }
+        .jupiter { width: 12px; height: 12px; background-color: #d2a67d; }
+        .saturn-orbit { width: 180px; height: 180px; animation-duration: 50s; }
+        .saturn { width: 10px; height: 10px; background-color: #e0c58f; display: flex; align-items: center; justify-content: center; }
+        .ring { position: absolute; width: 150%; height: 150%; border: 1px solid #a8a29e; border-radius: 50%; transform: rotate(45deg) scaleY(0.3); }
+        .uranus-orbit { width: 210px; height: 210px; animation-duration: 70s; }
+        .uranus { width: 8px; height: 8px; background-color: #a5f3fc; }
+        .neptune-orbit { width: 240px; height: 240px; animation-duration: 90s; }
+        .neptune { width: 7px; height: 7px; background-color: #60a5fa; }
+
+        /* Desktop styles (md breakpoint: 768px) */
+        @media (min-width: 768px) {
+            .solar-system { width: 400px; height: 400px; }
+            .sun { width: 50px; height: 50px; }
+            .mercury-orbit { width: 80px; height: 80px; }
+            .mercury { width: 8px; height: 8px; }
+            .venus-orbit { width: 120px; height: 120px; }
+            .venus { width: 12px; height: 12px; }
+            .earth-orbit { width: 170px; height: 170px; }
+            .earth { width: 14px; height: 14px; }
+            .mars-orbit { width: 220px; height: 220px; }
+            .mars { width: 10px; height: 10px; }
+            .jupiter-orbit { width: 290px; height: 290px; }
+            .jupiter { width: 24px; height: 24px; }
+            .saturn-orbit { width: 360px; height: 360px; }
+            .saturn { width: 20px; height: 20px; }
+            .ring { border-width: 2px; }
+            .uranus-orbit { width: 420px; height: 420px; }
+            .uranus { width: 16px; height: 16px; }
+            .neptune-orbit { width: 480px; height: 480px; }
+            .neptune { width: 15px; height: 15px; }
+        }
 
         @keyframes revolve {
             from { transform: rotate(0deg); }
@@ -195,7 +220,7 @@
         const sidebarOverlay = document.getElementById('sidebar-overlay');
         const chatToggle = document.getElementById('chat-toggle');
         const chatWindow = document.getElementById('chat-window');
-        const chatClose = document.getElementById('chat-close'); // New close button
+        const chatClose = document.getElementById('chat-close');
         const chatMessages = document.getElementById('chat-messages');
         const chatInput = document.getElementById('chat-input');
         const chatSend = document.getElementById('chat-send');
@@ -217,10 +242,10 @@
             sidebarOverlay.classList.add('hidden');
         });
         
-        // Chatbot Toggle Logic (New)
+        // Chatbot Toggle Logic
         function toggleChatWindow() {
             const isHidden = chatWindow.classList.toggle('hidden');
-            chatToggle.classList.toggle('hidden', !isHidden); // Hide toggle button when chat is open
+            chatToggle.classList.toggle('hidden', !isHidden);
             if (!isHidden) {
                 chatInput.focus();
             }
