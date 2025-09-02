@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ curriculum.course_title }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-white font-sans" data-course-name="{{ course_name }}">
+    <div class="relative h-screen flex overflow-hidden">
+        <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-20 hidden md:hidden"></div>
+
+        <aside id="sidebar" class="absolute inset-y-0 left-0 bg-white border-r p-6 w-72 overflow-y-auto transform -translate-x-full md:relative md:translate-x-0 z-30 transition-transform duration-300 ease-in-out">
+            <h1 class="text-2xl font-bold mb-1 text-slate-800">{{ curriculum.course_title }}</h1>
+            <a href="/" class="text-sm text-blue-700 mb-6 block">&larr; Back to Courses</a>
+            <nav id="sidebar-nav">
+                {% for week in curriculum.weeks %}
+                    {% set week_index = loop.index %}
+                    <div class="mb-2">
+                        <button class="week-accordion flex justify-between items-center w-full text-left p-3 rounded-lg hover:bg-slate-100 transition-colors" data-week-index="{{ week_index }}">
+                            <span class="font-semibold text-slate-700">{{ week.title }}</span>
+                            <i data-lucide="chevron-down" class="lucide-icon transition-transform"></i>
+                        </button>
+                        <div class="lecture-panel pl-4 pt-2">
+                            <ul>
+                                {% for i in range(1, week.lectures + 1) %}
+                                <li>
+                                    <a href="#" class="lecture-link flex items-center p-2 text-slate-600 rounded-lg hover:bg-slate-200" data-week="{{ week_index }}" data-lecture="{{ i }}">
+                                        Lecture {{ i }}
+                                    </a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            <div class="mt-2 pt-2 border-t border-slate-200">
+                                <h3 class="text-xs font-semibold text-slate-400 uppercase px-2 mb-1">Review</h3>
+                                <ul>
+                                    <li><a href="#" class="assessment-link flex items-center p-2 text-slate-600 rounded-lg hover:bg-slate-200" data-week="{{ week_index }}" data-type="concept_check">Concept Check</a></li>
+                                    <li><a href="#" class="assessment-link flex items-center p-2 text-slate-600 rounded-lg hover:bg-slate-200" data-week="{{ week_index }}" data-type="quick_test">Quick Test</a></li>
+                                    <li><a href="#" class="assessment-link flex items-center p-2 text-slate-600 rounded-lg hover:bg-slate-200" data-week="{{ week_index }}" data-type="assessment">Assessment</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </nav>
+        </aside>
+
+        <main id="main-content" class="flex-1 overflow-y-auto">
+            <div class="md:hidden flex items-center justify-between p-4">
+                 <button id="menu-toggle" class="p-2 text-slate-600 rounded-md hover:bg-slate-200">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+                <h2 class="text-lg font-bold text-slate-700">Spatial Learn</h2>
+            </div>
+           
+            <nav id="nav-container" class="hidden sticky top-0 bg-slate-100/80 backdrop-blur-sm z-10 px-4 md:px-8 py-3">
+                <div class="flex items-center justify-center w-full max-w-md mx-auto bg-slate-200/70 rounded-lg p-1 space-x-1" role="tablist">
+                    <button role="tab" class="nav-step" data-step="0">Explanation</button>
+                    <button role="tab" class="nav-step" data-step="1">Practical</button>
+                    <button role="tab" class="nav-step" data-step="2">Q&A</button>
+                </div>
+            </nav>
+
+            <div class="p-4 md:p-8">
+                <div id="content-display" class="relative bg-white p-6 md:p-8 min-h-[70vh]">
+                    <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-4" id="topic-title">Select a lecture to begin</h2>
+                    
+                    <div id="loading-overlay" class="fixed inset-0 bg-white flex items-center justify-center z-50 hidden">
+                        <div id="loader" class="flex flex-col items-center justify-center space-y-8" style="min-height: 450px;">
+                            <div class="solar-system-container">
+                                <div class="solar-system">
+                                    <div class="sun"></div>
+                                    <div class="orbit mercury-orbit"><div class="planet mercury"></div></div>
+                                    <div class="orbit venus-orbit"><div class="planet venus"></div></div>
+                                    <div class="orbit earth-orbit"><div class="planet earth"></div></div>
+                                    <div class="orbit mars-orbit"><div class="planet mars"></div></div>
+                                    <div class="orbit jupiter-orbit"><div class="planet jupiter"></div></div>
+                                    <div class="orbit saturn-orbit">
+                                        <div class="planet saturn">
+                                            <div class="ring"></div>
+                                        </div>
+                                    </div>
+                                    <div class="orbit uranus-orbit"><div class="planet uranus"></div></div>
+                                    <div class="orbit neptune-orbit"><div class="planet neptune"></div></div>
+                                </div>
+                            </div>
+                            <p class="text-blue-700 font-large text-lg" style="padding-top: 25px;">Module creation in progress</p>
+                        </div>
+                    </div>
+
+                    <div id="section-content" class="prose max-w-none"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <button id="chat-toggle" class="fixed bottom-8 right-8 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition z-40">
+        <i data-lucide="message-circle" class="w-8 h-8"></i>
+    </button>
+
+    <div id="chat-window" class="fixed bottom-28 right-8 w-96 bg-white rounded-2xl shadow-2xl hidden flex flex-col h-[70vh] max-h-[600px] z-40">
+        <div class="p-4 bg-blue-600 text-white rounded-t-2xl flex justify-between items-center">
+            <h3 class="font-bold text-lg">AI Assistant</h3>
+        </div>
+        <div id="chat-messages" class="flex-1 p-4 overflow-y-auto">
+            <div class="mb-2 p-2 rounded-2xl bg-slate-200">
+                <p class="text-sm">Hello! How can I help you clarify any concepts from the course?</p>
+            </div>
+        </div>
+        <div class="p-4 border-t bg-slate-50 rounded-b-2xl">
+            <div class="flex items-center mb-2">
+                <input type="checkbox" id="lecture-context-checkbox" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                <label for="lecture-context-checkbox" class="ml-2 block text-sm text-slate-700">Use Context from Current Lecture</label>
+            </div>
+            <div class="flex">
+                <input type="text" id="chat-input" class="flex-1 border-slate-300 rounded-l-xl p-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Ask a question...">
+                <button id="chat-send" class="bg-blue-600 text-white px-4 rounded-r-xl hover:bg-blue-700 flex items-center justify-center">
+                    <i data-lucide="send" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .nav-step { flex: 1; text-align: center; padding: 8px 12px; border-radius: 6px; font-weight: 600; color: #475569; transition: all 0.2s ease-in-out; border: 2px solid transparent; }
+        .nav-step.active { background-color: white; color: #0f172a; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .nav-step:not(.active):hover { background-color: #f8fafc; }
+        .prose pre { max-height: 400px; overflow-y: auto; }
+        .lecture-panel { transition: max-height 0.3s ease-in-out; max-height: 0; overflow: hidden; }
+        .lecture-panel.open { max-height: 500px; }
+        .lucide-icon { width: 18px; height: 18px; }
+        
+        /* --- Solar System Animation --- */
+        .solar-system-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 50px; /* Add padding to prevent clipping */
+        }
+        .solar-system {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .sun {
+            width: 50px;
+            height: 50px;
+            background-color: #facc15; /* Tailwind yellow-400 */
+            border-radius: 50%;
+            box-shadow: 0 0 20px #fde047, 0 0 40px #f59e0b;
+        }
+        .orbit {
+            position: absolute;
+            border: 1px solid #94a3b8; /* Tailwind slate-400 */
+            border-radius: 50%;
+            animation-name: revolve;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+        .planet {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            border-radius: 50%;
+        }
+        
+        .mercury-orbit { width: 80px; height: 80px; animation-duration: 5s; }
+        .mercury { width: 8px; height: 8px; background-color: #a8a29e; /* stone-400 */ }
+
+        .venus-orbit { width: 120px; height: 120px; animation-duration: 8s; }
+        .venus { width: 12px; height: 12px; background-color: #f59e0b; /* amber-500 */ }
+
+        .earth-orbit { width: 170px; height: 170px; animation-duration: 12s; }
+        .earth { width: 14px; height: 14px; background-color: #3b82f6; /* blue-500 */ }
+
+        .mars-orbit { width: 220px; height: 220px; animation-duration: 20s; }
+        .mars { width: 10px; height: 10px; background-color: #ef4444; /* red-500 */ }
+
+        .jupiter-orbit { width: 290px; height: 290px; animation-duration: 35s; }
+        .jupiter { width: 24px; height: 24px; background-color: #d2a67d; }
+
+        .saturn-orbit { width: 360px; height: 360px; animation-duration: 50s; }
+        .saturn {
+            width: 20px;
+            height: 20px;
+            background-color: #e0c58f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .ring {
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            border: 2px solid #a8a29e; /* stone-400 */
+            border-radius: 50%;
+            transform: rotate(45deg) scaleY(0.3);
+        }
+
+        .uranus-orbit { width: 420px; height: 420px; animation-duration: 70s; }
+        .uranus { width: 16px; height: 16px; background-color: #a5f3fc; /* cyan-200 */ }
+        
+        .neptune-orbit { width: 480px; height: 480px; animation-duration: 90s; }
+        .neptune { width: 15px; height: 15px; background-color: #60a5fa; /* blue-400 */ }
+
+        @keyframes revolve {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // --- STATE & CONFIG ---
+        const courseName = document.body.dataset.courseName;
+        let lectureData = null;
+        let currentSectionIndex = 0;
+        let activeLink = null;
+        let activeWeek = null;
+
+        // --- DOM ELEMENTS ---
+        const navContainer = document.getElementById('nav-container');
+        const topicTitle = document.getElementById('topic-title');
+        const sectionContent = document.getElementById('section-content');
+        const loadingOverlay = document.getElementById('loading-overlay');
+        const menuToggle = document.getElementById('menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+        const chatToggle = document.getElementById('chat-toggle');
+        const chatWindow = document.getElementById('chat-window');
+        const chatMessages = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+        const chatSend = document.getElementById('chat-send');
+        const lectureContextCheckbox = document.getElementById('lecture-context-checkbox');
+
+        // --- INITIALIZATION ---
+        lucide.createIcons();
+
+        // --- EVENT LISTENERS ---
+        // Mobile Menu Toggle
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.remove('-translate-x-full');
+            sidebarOverlay.classList.remove('hidden');
+        });
+
+        sidebarOverlay.addEventListener('click', () => {
+            sidebar.classList.add('-translate-x-full');
+            sidebarOverlay.classList.add('hidden');
+        });
+        
+        // Chatbot Toggle
+        chatToggle.addEventListener('click', () => {
+            chatWindow.classList.toggle('hidden');
+            if (!chatWindow.classList.contains('hidden')) {
+                chatInput.focus();
+            }
+        });
+
+        // Chatbot Send Message
+        chatSend.addEventListener('click', sendChatMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendChatMessage();
+            }
+        });
+
+        async function sendChatMessage() {
+            const message = chatInput.value.trim();
+            if (!message) return;
+
+            appendMessage('user', message);
+            chatInput.value = '';
+            chatInput.disabled = true;
+            chatSend.disabled = true;
+            
+            appendMessage('bot', '...', true); // Typing indicator
+
+            try {
+                const response = await fetch('/api/chatbot', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        course: courseName,
+                        week: activeWeek,
+                        message: message,
+                        use_context: lectureContextCheckbox.checked
+                    }),
+                });
+                if (!response.ok) throw new Error('Failed to fetch from backend');
+                
+                const data = await response.json();
+                updateLastBotMessage(data.response);
+
+            } catch (error) {
+                console.error('Error fetching chatbot response:', error);
+                updateLastBotMessage('Sorry, I encountered an error. Please try again.');
+            } finally {
+                chatInput.disabled = false;
+                chatSend.disabled = false;
+                chatInput.focus();
+            }
+        }
+        
+        function appendMessage(sender, text, isTyping = false) {
+            const messageDiv = document.createElement('div');
+            const content = document.createElement('p');
+            content.className = 'text-sm';
+            content.innerText = text;
+
+            messageDiv.appendChild(content);
+            messageDiv.classList.add('mb-4', 'p-3', 'rounded-lg', 'max-w-xs', 'break-words');
+            
+            if (sender === 'user') {
+                messageDiv.classList.add('bg-blue-500', 'text-white', 'self-end', 'ml-auto');
+            } else {
+                messageDiv.classList.add('bg-slate-200', 'text-slate-800', 'self-start', 'mr-auto');
+                if (isTyping) {
+                    messageDiv.id = 'typing-indicator';
+                    content.innerHTML = '<span class="animate-pulse">...</span>';
+                }
+            }
+
+            if (!chatMessages.classList.contains('flex-col')) {
+                 chatMessages.classList.add('flex', 'flex-col');
+            }
+
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function updateLastBotMessage(text) {
+            const typingIndicator = document.getElementById('typing-indicator');
+            if (typingIndicator) {
+                typingIndicator.querySelector('p').innerHTML = marked.parse(text);
+                typingIndicator.removeAttribute('id');
+            } else {
+                appendMessage('bot', text);
+            }
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        document.querySelectorAll('.week-accordion').forEach(button => {
+            button.addEventListener('click', () => {
+                const panel = button.nextElementSibling;
+                const icon = button.querySelector('.lucide-icon');
+                
+                document.querySelectorAll('.lecture-panel.open').forEach(openPanel => {
+                    if (openPanel !== panel) {
+                         openPanel.classList.remove('open');
+                         openPanel.previousElementSibling.querySelector('.lucide-icon').classList.remove('rotate-180');
+                    }
+                });
+                panel.classList.toggle('open');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+
+        function handleLinkClick(linkElement) {
+            setActiveLink(linkElement);
+            activeWeek = linkElement.dataset.week;
+            if (window.innerWidth < 768) { // Tailwind's 'md' breakpoint
+                sidebar.classList.add('-translate-x-full');
+                sidebarOverlay.classList.add('hidden');
+            }
+        }
+
+        document.querySelectorAll('.lecture-link').forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                handleLinkClick(link);
+                fetchAndDisplayLecture(link.dataset.week, link.dataset.lecture);
+            });
+        });
+        
+        document.querySelectorAll('.assessment-link').forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                handleLinkClick(link);
+                fetchAndDisplayAssessment(link.dataset.week, link.dataset.type, link.textContent);
+            });
+        });
+        
+        function setActiveLink(linkElement) {
+            if (activeLink) activeLink.classList.remove('bg-blue-100', 'font-semibold');
+            activeLink = linkElement;
+            activeLink.classList.add('bg-blue-100', 'font-semibold');
+        }
+
+        async function fetchAndDisplayLecture(week, lecture) {
+            const cacheKey = `${courseName}_w${week}_l${lecture}`;
+            const cachedData = await fetchCachedLecture(cacheKey);
+
+            if (cachedData) {
+                lectureData = cachedData;
+                currentSectionIndex = 0;
+                displayLectureContent(week, lecture);
+                return;
+            }
+
+            loadingOverlay.classList.remove('hidden');
+            navContainer.classList.add('hidden');
+            topicTitle.textContent = `Loading: Week ${week}, Lecture ${lecture}...`;
+            sectionContent.innerHTML = '';
+            
+            try {
+                const response = await fetch('/api/get_content', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ course: courseName, week, lecture }),
+                });
+                if (!response.ok) throw new Error('Failed to fetch from backend');
+                
+                lectureData = await response.json();
+                await cacheLecture(cacheKey, lectureData);
+                
+                currentSectionIndex = 0;
+                displayLectureContent(week, lecture);
+            } catch (error) {
+                console.error('Error fetching lecture:', error);
+                topicTitle.textContent = "Error";
+                sectionContent.innerHTML = `<p class="text-red-500">Could not load content.</p>`;
+            } finally {
+                loadingOverlay.classList.add('hidden');
+            }
+        }
+        
+        async function fetchAndDisplayAssessment(week, type, title) {
+            loadingOverlay.classList.remove('hidden');
+            navContainer.classList.add('hidden');
+            topicTitle.textContent = `Generating: Week ${week} - ${title}...`;
+            sectionContent.innerHTML = '';
+
+            try {
+                const response = await fetch('/api/generate_assessment', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ course: courseName, week, type }),
+                });
+                if (!response.ok) throw new Error('Failed to generate assessment');
+                
+                const questions = await response.json();
+                topicTitle.textContent = `Week ${week} - ${title}`;
+                renderQuiz(questions);
+                
+            } catch (error) {
+                console.error('Error fetching assessment:', error);
+                topicTitle.textContent = "Error";
+                sectionContent.innerHTML = `<p class="text-red-500">Could not generate the assessment.</p>`;
+            } finally {
+                loadingOverlay.classList.add('hidden');
+            }
+        }
+
+        async function fetchCachedLecture(cacheKey) {
+            const response = await fetch('/api/get_cached_lecture', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ cache_key: cacheKey }),
+            });
+            if (response.status !== 200) return null;
+            return await response.json();
+        }
+
+        async function cacheLecture(cacheKey, content) {
+            await fetch('/api/cache_lecture', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ cache_key: cacheKey, content: content }),
+            });
+        }
+
+        function displayLectureContent(week, lecture) {
+            topicTitle.textContent = `Week ${week} - Lecture ${lecture}`;
+            navContainer.classList.remove('hidden');
+            setupNavigators();
+            renderCurrentSection();
+        }
+
+        function setupNavigators() {
+            document.querySelectorAll('.nav-step').forEach(button => {
+                button.onclick = () => {
+                    currentSectionIndex = parseInt(button.dataset.step);
+                    renderCurrentSection();
+                };
+            });
+        }
+
+        function renderCurrentSection() {
+            if (!lectureData) return;
+            document.querySelectorAll('.nav-step').forEach((btn, idx) => btn.classList.toggle('active', idx === currentSectionIndex));
+            
+            const section = lectureData.sections[currentSectionIndex];
+            sectionContent.innerHTML = '';
+            
+            if (section.type === 'explanation' || section.type === 'practical') {
+                sectionContent.innerHTML = marked.parse(section.content || "");
+                sectionContent.querySelectorAll('pre code').forEach(hljs.highlightElement);
+            } else if (section.type === 'qna') {
+                renderQuiz(section.content);
+            }
+        }
+
+        function renderQuiz(questions) {
+            const form = document.createElement('form');
+            if (!Array.isArray(questions)) {
+                console.error("Q&A content is not an array:", questions);
+                sectionContent.innerHTML = "<p>Could not load questions.</p>";
+                return;
+            }
+            questions.forEach((q, index) => {
+                const qBlock = document.createElement('div');
+                qBlock.className = 'mb-6';
+                qBlock.innerHTML = `<p class="font-semibold mb-2">${index + 1}. ${q.question_text || 'Question text missing.'}</p>`;
+                
+                if (Array.isArray(q.options)) {
+                    q.options.forEach(option => {
+                        qBlock.innerHTML += `
+                            <label class="flex items-center space-x-2 p-2 rounded hover:bg-slate-100 cursor-pointer">
+                                <input type="radio" name="q${index}" value="${option}" class="form-radio text-blue-600">
+                                <span>${option}</span>
+                            </label>`;
+                    });
+                }
+                form.appendChild(qBlock);
+            });
+            sectionContent.appendChild(form);
+            
+            const submitButton = document.createElement('button');
+            submitButton.textContent = 'Check Answers';
+            submitButton.className = 'px-4 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition mt-4';
+            submitButton.onclick = (e) => {
+                e.preventDefault();
+                checkQuizAnswers(form, questions);
+            };
+            form.appendChild(submitButton);
+        }
+
+        function checkQuizAnswers(form, questions) {
+            if (!Array.isArray(questions)) return;
+            questions.forEach((q, index) => {
+                const selected = form.querySelector(`input[name="q${index}"]:checked`);
+                const labels = form.querySelectorAll(`input[name="q${index}"]`);
+                labels.forEach(el => el.parentElement.classList.remove('bg-red-200', 'bg-green-200'));
+
+                const correctLabel = Array.from(labels).find(el => el.value === q.correct_answer)?.parentElement;
+                if(correctLabel) correctLabel.classList.add('bg-green-200');
+
+                if (selected && selected.value !== q.correct_answer) {
+                    selected.parentElement.classList.remove('bg-green-200');
+                    selected.parentElement.classList.add('bg-red-200');
+                }
+            });
+        }
+    });
+    </script>
+</body>
+</html>
