@@ -1,0 +1,27 @@
+Module 3: Bernoulli, Categorical, and Complement Naive Bayes 🗂️
+This module covers the remaining Naive Bayes variants, which are suited for specific types of data and problem scenarios.
+
+Bernoulli Naive Bayes (BernoulliNB):
+
+Use Case: This classifier is used for binary or boolean features, where features are either present (1) or absent (0). Like MultinomialNB, it is also popular for text classification, but instead of word counts, it uses binary term occurrence (i.e., whether a word appears in a document or not).
+
+Implementation:
+
+Python
+
+from sklearn.naive_bayes import BernoulliNB
+bnb = BernoulliNB()
+bnb.fit(X_train, y_train)
+Categorical Naive Bayes (CategoricalNB):
+
+Use Case: This is designed for features that are categorically distributed, meaning each feature has a discrete set of categories.
+
+How it Works: It assumes that for each class, the features are drawn from a categorical distribution.
+
+Implementation:
+
+Python
+
+from sklearn.naive_bayes import CategoricalNB
+cnb = CategoricalNB()
+cnb.fit(X_train, y_train)

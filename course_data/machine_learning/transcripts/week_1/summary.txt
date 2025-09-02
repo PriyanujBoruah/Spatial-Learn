@@ -1,0 +1,9 @@
+Week 1 serves as an introduction to the end-to-end machine learning project lifecycle, with a focus on the initial stages of a project and an introduction to the Scikit-Learn (sklearn) library. The key takeaways from the first week are:
+
+The 8 Steps of a Machine Learning Project: A typical machine learning project is broken down into eight key steps, starting from understanding the big picture and framing the problem, to deploying and maintaining the system. These steps provide a structured approach to solving machine learning problems in a real-world setting. A significant portion of time in a machine learning project is spent on data-related tasks, such as data capture, processing, and visualization, rather than on the machine learning algorithms themselves.
+
+Introduction to Scikit-Learn (sklearn): Scikit-Learn is a popular Python library for machine learning. It provides a consistent and user-friendly API for various machine learning tasks. The library is built around the concepts of Estimators, which are used to learn from data (e.g., for classification or regression), Transformers, which are used to modify or filter data, and Predictors, which are used to make predictions on new data.
+
+Data Loading in Sklearn: Sklearn offers several ways to load data for machine learning tasks. These include toy datasets that are bundled with the library (e.g., Iris, Boston Housing), dataset fetchers that can download and load larger, real-world datasets from the internet, and dataset generators that can create synthetic datasets with specific properties.
+
+Data Transformation: Before feeding data into a machine learning model, it's often necessary to perform data transformations. This can include cleaning the data (e.g., handling missing values), extracting features from the data, and reducing or expanding the feature set. Transformers in sklearn have fit(), transform(), and fit_transform() methods to learn from the data and apply the transformations.

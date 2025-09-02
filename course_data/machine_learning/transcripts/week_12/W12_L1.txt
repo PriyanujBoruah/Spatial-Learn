@@ -1,0 +1,24 @@
+Module 1: Introduction to Unsupervised Learning 🧐
+This module introduces the core concepts of unsupervised learning, contrasting it with supervised learning and highlighting its main applications and categories.
+
+Supervised vs. Unsupervised Learning:
+
+Supervised Learning: The algorithm learns from a labeled dataset, where each data point has a known output or target. The goal is to learn a mapping function that can predict the output for new, unseen data.
+
+Unsupervised Learning: The algorithm is given unlabeled data and must find patterns or structure on its own. There is no "correct" answer to learn from.
+
+Applications of Unsupervised Learning:
+
+Customer Segmentation: Grouping customers based on their purchasing behavior to create targeted marketing campaigns.
+
+Anomaly Detection: Identifying unusual data points that do not conform to expected patterns, which can be useful for fraud detection or identifying defective products.
+
+Data Compression: Reducing the dimensionality of data to save storage space and speed up computations, as seen with PCA.
+
+Topic Modeling: Discovering the main topics present in a collection of text documents.
+
+Main Categories of Unsupervised Learning:
+
+Clustering: The task of dividing the data into groups (clusters) such that data points in the same group are more similar to each other than to those in other groups.
+
+Dimensionality Reduction: The process of reducing the number of random variables under consideration by obtaining a set of principal variables.

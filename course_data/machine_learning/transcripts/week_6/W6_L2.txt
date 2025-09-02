@@ -1,0 +1,29 @@
+Module 2: Gaussian and Multinomial Naive Bayes 📊
+This module explores two of the most commonly used Naive Bayes classifiers, each designed for different types of numerical data.
+
+Gaussian Naive Bayes (GaussianNB):
+
+Use Case: This classifier is used when your features are continuous and are assumed to follow a Gaussian (normal) distribution. For each class, the algorithm estimates the mean and standard deviation of each feature from the training data.
+
+How it Works: When making a prediction for a new data point, GaussianNB calculates the probability of that data point belonging to each class by plugging its feature values into the Gaussian probability density function for each class.
+
+Implementation:
+
+Python
+
+from sklearn.naive_bayes import GaussianNB
+gnb = GaussianNB()
+gnb.fit(X_train, y_train)
+Multinomial Naive Bayes (MultinomialNB):
+
+Use Case: This classifier is designed for features that represent discrete counts. Its primary application is in text classification, where the features can be the frequency of words in a document (word counts).
+
+How it Works: It models the probability of observing a certain count for each feature given a class, based on the multinomial distribution.
+
+Implementation:
+
+Python
+
+from sklearn.naive_bayes import MultinomialNB
+mnb = MultinomialNB()
+mnb.fit(X_train, y_train)

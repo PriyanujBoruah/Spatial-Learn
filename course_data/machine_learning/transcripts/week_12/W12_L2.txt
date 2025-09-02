@@ -1,0 +1,22 @@
+Module 2: Partitioning Clustering - K-Means Algorithm 🧩
+This module provides a deep dive into K-Means, one of the most popular and widely used partitioning clustering algorithms.
+
+The Goal of K-Means: K-Means aims to partition a dataset into k distinct, non-overlapping clusters. It does this by finding k cluster centroids (the center of each cluster) and assigning each data point to the cluster with the nearest centroid.
+
+The K-Means Algorithm: The algorithm works in an iterative fashion:
+
+Initialization: Randomly select k data points from the dataset to be the initial centroids.
+
+Assignment Step: Assign each data point to the closest centroid, based on a distance metric like Euclidean distance. This forms k clusters.
+
+Update Step: Recalculate the centroid of each cluster by taking the mean of all the data points assigned to that cluster.
+
+Repeat: Repeat the Assignment and Update steps until the cluster assignments no longer change or a maximum number of iterations is reached.
+
+Choosing the Optimal Number of Clusters (k): The number of clusters, k, is a hyperparameter that must be specified beforehand. A common method for choosing k is the Elbow Method, where you plot the within-cluster sum of squares (inertia) for a range of k values and look for the "elbow" point where the rate of decrease in inertia slows down.
+
+Strengths and Weaknesses:
+
+Strengths: K-Means is simple, fast, and scales well to large datasets.
+
+Weaknesses: It is sensitive to the initial placement of centroids and assumes that the clusters are spherical and of similar size. It also struggles with clusters of varying densities and non-spherical shapes.

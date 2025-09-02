@@ -1,0 +1,27 @@
+Module 1: Capturing Non-Linearity with Polynomial Regression 🎢
+This module introduces polynomial regression as a powerful extension of linear regression, enabling you to model complex, non-linear relationships in your data.
+
+From Linear to Non-Linear: While linear regression is excellent for modeling linear relationships, many real-world phenomena are non-linear. Polynomial regression addresses this by creating new features that are powers of the original features. For example, if you have a feature 'x', you can create new features like x², x³, and so on. A linear regression model can then be fit to this expanded set of features, resulting in a non-linear model.
+
+Creating Polynomial Features:
+
+PolynomialFeatures Transformer: Scikit-learn's PolynomialFeatures is the primary tool for this task. You can specify the degree of the polynomial, which controls the complexity of the model. A higher degree will result in a more flexible model but also increases the risk of overfitting.
+
+Interaction Features: In addition to polynomial terms, you can also create interaction features, which are the products of different features (e.g., x₁ * x₂). This can capture how the effect of one feature on the target variable depends on the value of another feature. You can create only interaction features by setting interaction_only=True.
+
+Implementation with Pipelines: The best way to implement polynomial regression is by using a scikit-learn Pipeline. This allows you to chain the PolynomialFeatures transformer and a linear regression estimator (like LinearRegression or SGDRegressor) into a single object. This ensures that the polynomial transformation is applied correctly to both your training and test data, preventing data leakage and simplifying your workflow.
+
+Python
+
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LinearRegression
+
+# Create a pipeline that first creates polynomial features, then fits a linear model
+poly_model = Pipeline([
+    ('polynomial_transform', PolynomialFeatures(degree=2)),
+    ('linear_regression', LinearRegression())
+])
+
+# Train the model
+poly_model.fit(X_train, y_train)

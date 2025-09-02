@@ -1,0 +1,16 @@
+Module 2: MLP Architecture and Hyperparameters 🧱
+This module focuses on the key hyperparameters that define the structure of the MLP and control its behavior.
+
+Defining the Network's Architecture (hidden_layer_sizes): This is one of the most critical hyperparameters. It is a tuple where the length of the tuple specifies the number of hidden layers, and each element in the tuple defines the number of neurons in that layer. For example, hidden_layer_sizes=(100, 50) would create an MLP with two hidden layers, the first with 100 neurons and the second with 50.
+
+Activation Functions (activation): The activation function introduces non-linearity into the model, which allows it to learn complex, non-linear relationships. This function is applied to the output of each neuron in the hidden layers. Scikit-Learn provides several options:
+
+'identity': A linear activation function (no-op).
+
+'logistic': The logistic sigmoid function.
+
+'tanh': The hyperbolic tan function.
+
+'relu' (Default): The Rectified Linear Unit function. It is the most commonly used activation function in modern neural networks.
+
+Regularization (alpha): To prevent overfitting, MLPs in Scikit-Learn use L2 regularization, which penalizes large weights. The strength of this regularization is controlled by the alpha parameter. The default value is 0.0001.

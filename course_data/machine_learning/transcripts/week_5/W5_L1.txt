@@ -1,0 +1,32 @@
+Module 1: Foundational Classifiers in Scikit-Learn 🎯
+This module introduces you to the core, specific classifiers available in Scikit-Learn. You will learn how to implement, train, and configure three fundamental linear models for classification tasks.
+
+Ridge Classifier (Least Squares Classification): This classifier is a variant of the Ridge regressor adapted for classification tasks.
+
+How it Works: For binary classification, it converts target labels to [-1, 1] and treats the problem as a regression task, aiming to minimize a penalized residual sum of squares. For multiclass problems, it's treated as a multi-output regression problem.
+
+Key Hyperparameters:
+
+alpha: Controls the strength of the L2 regularization. Larger values mean stronger regularization.
+
+solver: You can choose from various optimization solvers like 'svd', 'cholesky', 'sag', and 'lbfgs'. The 'auto' setting will select the best solver based on your data.
+
+Perceptron: This is one of the simplest classification algorithms, well-suited for large-scale learning.
+
+Implementation: It is implemented via the Perceptron class and shares its underlying implementation with SGDClassifier using a specific loss function. It can be trained iteratively using the partial_fit method.
+
+Key Hyperparameters: You can control its behavior with parameters like penalty (for regularization), alpha, max_iter (maximum number of epochs), and early_stopping.
+
+Logistic Regression: This is a robust and widely used linear model for classification, also known as a log-linear classifier.
+
+Functionality: It can handle binary, one-vs-rest (OVR), and multinomial classification. It optimizes a logistic loss function with optional regularization.
+
+Key Hyperparameters:
+
+solver: The choice of solver (e.g., 'liblinear', 'sag', 'saga', 'lbfgs') is important and depends on the dataset size and the type of regularization penalty used.
+
+penalty: Supports 'l1', 'l2', 'elasticnet', or 'none'.
+
+C: The inverse of regularization strength. Smaller values of C specify stronger regularization.
+
+class_weight: This parameter is used to handle class imbalance by giving more weight to minority classes.

@@ -1,0 +1,22 @@
+Module 4: RadiusNeighborsClassifier and Its Use Cases 🎯
+This module focuses on the RadiusNeighborsClassifier, explaining its unique approach to classification and when it might be a better choice than the standard KNeighborsClassifier.
+
+Classification Based on a Fixed Radius: Instead of using a fixed number of neighbors, RadiusNeighborsClassifier uses all neighbors within a specified radius r of the new data point.
+
+Implementation:
+
+Python
+
+from sklearn.neighbors import RadiusNeighborsClassifier
+
+# Instantiate the classifier with a specified radius
+radius_classifier = RadiusNeighborsClassifier(radius=1.0)
+Key Hyperparameter:
+
+radius: This is the most important parameter for this classifier. It is a float value that defines the radius of the neighborhood to consider for classification. The default value is 1.0.
+
+When to Use RadiusNeighborsClassifier:
+
+Non-Uniformly Sampled Data: This classifier is particularly useful when the density of your data varies across the feature space. In densely populated areas, it will use many neighbors, while in sparsely populated areas, it will use fewer neighbors. This can lead to more robust classifications compared to KNeighborsClassifier, which might be forced to consider very distant points in sparse regions.
+
+Shared Hyperparameters: The RadiusNeighborsClassifier shares many of the same hyperparameters as KNeighborsClassifier for controlling the underlying neighbor search algorithm, including weights, algorithm, leaf_size, metric, and p.

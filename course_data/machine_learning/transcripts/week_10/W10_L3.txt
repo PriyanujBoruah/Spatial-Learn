@@ -1,0 +1,16 @@
+Module 3: Internal Clustering Evaluation Metrics 📏
+This module addresses a critical question in unsupervised learning: "How good are my clusters?" Since there are no ground truth labels, we need internal metrics to evaluate the quality of the clustering.
+
+The Need for Evaluation: Clustering algorithms will always produce clusters, but it's important to have a way to measure whether these clusters are meaningful. Internal evaluation metrics assess the quality of the clustering based on the intrinsic properties of the data, such as the compactness and separation of the clusters.
+
+Silhouette Score: The Silhouette Score is one of the most popular internal evaluation metrics.
+
+How it Works: For each data point, it calculates a score based on two values:
+
+a: The average distance to all other points in the same cluster (cohesion).
+
+b: The average distance to all points in the nearest neighboring cluster (separation).
+
+Interpretation: The score ranges from -1 to 1. A score close to 1 indicates that the point is well-clustered. A score around 0 indicates that the point is on the border between two clusters. A score close to -1 suggests that the point may have been assigned to the wrong cluster.
+
+Davies-Bouldin Index: This metric evaluates the average similarity ratio of each cluster with its most similar cluster. A lower Davies-Bouldin Index indicates better clustering, with well-separated and compact clusters.

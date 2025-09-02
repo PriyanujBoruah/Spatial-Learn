@@ -1,0 +1,26 @@
+Module 4: Advanced Regularization and Model-Specific Tuning 🚀
+This module explores more advanced topics in regularization and introduces efficient, model-specific tools for hyperparameter tuning.
+
+Elastic Net in Detail: Elastic Net is particularly useful when you have many correlated features. Lasso might arbitrarily pick one of the correlated features and discard the others, while Ridge would tend to shrink their coefficients together. Elastic Net provides a balance, allowing you to control the mix of L1 and L2 penalties with the l1_ratio parameter. An l1_ratio of 1 is equivalent to Lasso, and an l1_ratio of 0 is equivalent to Ridge.
+
+Model-Specific Cross-Validation: For some models, scikit-learn provides specialized estimators that perform cross-validation more efficiently for a specific hyperparameter.
+
+RidgeCV, LassoCV, and ElasticNetCV: These estimators are designed to efficiently find the optimal value for the regularization parameter alpha. Instead of performing a standard grid search, they can leverage the fact that the regularization path (the coefficients as a function of alpha) can be computed efficiently. This makes them much faster than using GridSearchCV with a Ridge or Lasso estimator.
+
+Putting It All Together: Regularization in Polynomial Regression: A common use case is to apply regularization to a polynomial regression model to prevent it from overfitting. You can do this by creating a Pipeline that first applies the PolynomialFeatures transformation and then fits a regularized model like Ridge or Lasso.
+
+Python
+
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import Ridge
+
+# Create a pipeline for regularized polynomial regression
+poly_ridge_model = Pipeline([
+    ('polynomial_transform', PolynomialFeatures(degree=10)),
+    ('ridge_regularization', Ridge(alpha=0.1))
+])
+
+# Train the model
+poly_ridge_model.fit(X_train, y_train)
+You can then use GridSearchCV to tune both the degree of the polynomial and the alpha of the regularization simultaneously to find the best balance between model complexity and regularization.

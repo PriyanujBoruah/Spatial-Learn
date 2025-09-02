@@ -1,0 +1,20 @@
+Module 3: Handling Categorical Features and Composite Transformers 🧩
+This module covers techniques for converting categorical data into a numerical format and introduces powerful tools for creating complex data preprocessing pipelines.
+
+Encoding Categorical Features: Machine learning models can only work with numerical data, so categorical features need to be converted into a numerical format.
+
+OneHotEncoder: This is used for nominal (unordered) categorical features. It creates a new binary column for each category, and for each sample, the column corresponding to its category is set to 1, while all other columns are set to 0.
+
+OrdinalEncoder: This is used for ordinal (ordered) categorical features. It assigns an integer to each category based on its order.
+
+LabelEncoder: This is similar to OrdinalEncoder but is specifically designed for encoding the target variable (labels).
+
+LabelBinarizer and MultiLabelBinarizer: These are used for multi-class and multi-label classification problems, respectively, to convert the labels into a binary format.
+
+Composite Transformers: These tools are essential for building robust and reproducible machine learning workflows.
+
+Pipeline: This allows you to chain multiple transformers and an optional final estimator into a single object. This simplifies the code and ensures that the same preprocessing steps are applied to both the training and test data.
+
+ColumnTransformer: This is a very powerful tool that allows you to apply different transformers to different columns of your data. For example, you can use it to apply OneHotEncoder to categorical columns and StandardScaler to numerical columns in a single step.
+
+FeatureUnion: This transformer applies a list of transformers in parallel to the data and concatenates their results. This is useful for combining features created using different methods.

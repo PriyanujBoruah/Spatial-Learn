@@ -1,0 +1,16 @@
+Module 1: Fundamentals of K-Nearest Neighbors 🏡
+This module introduces the core concepts behind the K-Nearest Neighbors algorithm, explaining its instance-based nature and contrasting its two main implementations in Scikit-Learn.
+
+Instance-Based Learning: KNN is an example of instance-based or non-generalizing learning. This means the algorithm doesn't try to learn a general function from the training data. Instead, it memorizes the entire training dataset.
+
+Prediction Process: When a new, unseen data point needs to be classified, the algorithm finds the 'k' closest points (neighbors) to it from the stored training data. The new point is then assigned the class that is most common among its 'k' neighbors (a majority vote).
+
+Advantages: This approach is simple to understand and implement.
+
+Disadvantages: It can be computationally expensive during prediction time, especially with large datasets, as it needs to calculate the distance to all training points. It is also sensitive to the scale of the features and the presence of irrelevant features.
+
+KNeighborsClassifier vs. RadiusNeighborsClassifier: Scikit-Learn provides two main classifiers based on this principle.
+
+KNeighborsClassifier: This is the most widely used version. It bases its prediction on a fixed number of neighbors, k. The primary challenge with this method is choosing an optimal value for 'k', as this choice is highly dependent on the specific dataset.
+
+RadiusNeighborsClassifier: This classifier bases its prediction on all neighbors that fall within a fixed radius, r, of the new point. This can be particularly useful for datasets where the density of data points varies, as it allows points in sparser regions to use fewer neighbors for classification.

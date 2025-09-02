@@ -1,0 +1,26 @@
+Module 4: Boosting Algorithms - AdaBoost and Gradient Boosting 🚀
+This module introduces boosting, a family of ensemble methods that build models sequentially, with each model learning from the mistakes of the previous one.
+
+The Concept of Boosting: Boosting is an ensemble technique that aims to build a strong classifier by combining a number of "weak" classifiers. It does this by building models in a series, where each new model focuses on correcting the errors made by the previous ones.
+
+AdaBoost (Adaptive Boosting):
+
+How it Works: AdaBoost trains a sequence of weak learners (e.g., shallow decision trees). After each learner is trained, AdaBoost updates the weights of the training samples. Samples that were misclassified by the current learner are given a higher weight, so that the next learner in the sequence will focus more on them.
+
+Implementation: AdaBoostClassifier and AdaBoostRegressor.
+
+Key Hyperparameters:
+
+base_estimator: The weak learner to use (the default is a decision tree with a depth of 1).
+
+n_estimators: The maximum number of estimators at which boosting is terminated.
+
+learning_rate: This parameter controls the contribution of each weak learner to the final ensemble. There is a trade-off between n_estimators and learning_rate.
+
+Gradient Boosting:
+
+How it Works: This is a more generalized boosting framework. Instead of adjusting the weights of the training samples, it trains each new model to predict the residual errors of the previous model. The predictions of all the models are then added together to make the final prediction.
+
+Implementation: GradientBoostingClassifier and GradientBoostingRegressor.
+
+Key Hyperparameters: The two most important parameters are n_estimators and learning_rate. These two parameters are highly interconnected and need to be tuned together.

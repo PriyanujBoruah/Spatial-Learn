@@ -1,0 +1,15 @@
+Week 6 is dedicated to the Naive Bayes classifier, a fast and simple yet powerful probabilistic classification algorithm. The core of the week's material is understanding the theoretical underpinnings of Naive Bayes, which is based on Bayes' theorem with a "naive" assumption of conditional independence between features. This assumption, while often not perfectly true in the real world, is what makes the algorithm computationally efficient and surprisingly effective in many applications, especially in text classification.
+
+The week covers the various types of Naive Bayes classifiers available in Scikit-Learn's sklearn.naive_bayes module, each tailored to different kinds of data distributions:
+
+GaussianNB: Used for features that are continuous and assumed to follow a Gaussian (normal) distribution.
+
+MultinomialNB: Designed for features representing discrete counts, making it a popular choice for text classification tasks where features are word counts.
+
+BernoulliNB: Suitable for binary or boolean features.
+
+CategoricalNB: Used for features that are categorically distributed.
+
+ComplementNB: An adaptation of MultinomialNB that is particularly effective for imbalanced datasets.
+
+The practical implementation in Scikit-Learn is straightforward, primarily involving the fit() method for training the model and the predict() method for making predictions.

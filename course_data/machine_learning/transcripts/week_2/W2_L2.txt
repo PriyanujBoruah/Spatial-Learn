@@ -1,0 +1,18 @@
+Module 2: Feature Scaling and Numerical Transformations ⚖️
+This module focuses on the importance of feature scaling and introduces several techniques for transforming numerical features to make them more suitable for machine learning models.
+
+The Importance of Feature Scaling: Many machine learning algorithms are sensitive to the scale of the input features. For example, algorithms that use distance-based metrics, like k-nearest neighbors, or that use gradient descent for optimization, like linear regression, can perform poorly if the features are on different scales. Scaling ensures that all features contribute equally to the model's training process.
+
+StandardScaler: This is one of the most common scaling techniques. It transforms the features to have a mean of 0 and a standard deviation of 1. This is also known as standardization.
+
+MinMaxScaler: This scaler transforms the features to a specific range, typically [0, 1]. This is also known as normalization.
+
+MaxAbsScaler: This scaler is similar to MinMaxScaler but scales the data to a [-1, 1] range by dividing by the maximum absolute value of each feature. This is particularly useful for sparse data.
+
+Other Numerical Transformations:
+
+FunctionTransformer: This allows you to apply a custom function to your features, such as a logarithmic or square root transformation, which can be useful for changing the distribution of the data.
+
+PolynomialFeatures: This transformer generates new features that are polynomial combinations of the original features. This can help linear models capture non-linear relationships in the data.
+
+KBinsDiscretizer: This transformer converts a continuous variable into a discrete one by dividing it into a specified number of bins.

@@ -1,0 +1,21 @@
+Week 4 builds upon the foundational concepts of linear regression by introducing techniques to model non-linear relationships and to prevent overfitting. The week is centered around Polynomial Regression, Regularization (Ridge and Lasso), and the critical process of Hyperparameter Tuning.
+
+The key takeaways from the fourth week are:
+
+Polynomial Regression: This technique extends linear regression to capture non-linear trends in the data. It works by creating new features that are powers of the original features (e.g., x², x³) and their interaction terms (e.g., x₁ * x₂). This transformation allows a linear model to fit a non-linear function. The implementation is often done using scikit-learn's PolynomialFeatures transformer within a Pipeline to ensure a smooth workflow.
+
+Regularization: This is a set of techniques used to combat overfitting by adding a penalty term to the model's loss function, which discourages overly complex models. The two main types of regularization covered are:
+
+Ridge Regression (L2 Penalty): This method adds a penalty proportional to the square of the magnitude of the coefficients. This has the effect of shrinking the coefficients towards zero, but not exactly to zero.
+
+Lasso Regression (L1 Penalty): This method adds a penalty proportional to the absolute value of the coefficients. A key advantage of Lasso is that it can force some coefficients to be exactly zero, effectively performing feature selection by eliminating less important features.
+
+Elastic Net: A combination of both L1 and L2 penalties, offering a balance between the two.
+
+Hyperparameter Tuning: This is the process of finding the optimal values for a model's hyperparameters, which are parameters that are not learned from the data but are set prior to training. The week covers two primary strategies for this:
+
+GridSearchCV: This method performs an exhaustive search over a specified grid of hyperparameter values, evaluating each combination using cross-validation. It is thorough but can be computationally expensive.
+
+RandomizedSearchCV: This method samples a fixed number of parameter settings from specified statistical distributions. It is often more efficient than GridSearchCV, especially when the hyperparameter space is large.
+
+Model-Specific Cross-Validation: For certain models, scikit-learn offers more efficient, built-in cross-validation estimators for tuning specific hyperparameters. For regularization, these include RidgeCV, LassoCV, and ElasticNetCV, which efficiently search for the best regularization strength (alpha).

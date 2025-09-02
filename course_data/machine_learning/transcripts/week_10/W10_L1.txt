@@ -1,0 +1,28 @@
+Module 1: Density-Based Clustering with DBSCAN 密度
+This module introduces a powerful clustering method that moves beyond simple distance metrics to find clusters based on the density of data points.
+
+Limitations of Traditional Clustering: Algorithms like K-Means struggle with non-spherical clusters and are sensitive to outliers. Hierarchical clustering can be computationally expensive. Density-based clustering addresses these issues.
+
+Core Concepts of DBSCAN: DBSCAN (Density-Based Spatial Clustering of Applications with Noise) groups together points that are closely packed together, marking as outliers points that lie alone in low-density regions. Its key concepts are:
+
+Core Points: A point is a core point if it has at least a minimum number of other points (MinPts) within a specified radius (eps).
+
+Border Points: A point is a border point if it is within the eps radius of a core point but does not have enough neighbors to be a core point itself.
+
+Noise Points: A point that is neither a core nor a border point is considered noise.
+
+The DBSCAN Algorithm:
+
+The algorithm starts with an arbitrary point that has not been visited.
+
+It retrieves the point's neighborhood (all points within distance eps).
+
+If the neighborhood contains a sufficient number of points (MinPts), a new cluster is started. Otherwise, the point is labeled as noise.
+
+If a new cluster is formed, all points in the neighborhood are added to it. This process is repeated for all new points added to the cluster.
+
+Key Hyperparameters:
+
+eps: The maximum distance between two samples for one to be considered as in the neighborhood of the other.
+
+min_samples: The number of samples in a neighborhood for a point to be considered as a core point.

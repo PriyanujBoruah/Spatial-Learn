@@ -1,0 +1,17 @@
+Module 1: Feature Extraction and Data Cleaning 🧹
+This module covers the initial steps of data preprocessing, focusing on converting raw data into a usable format and handling missing values.
+
+Feature Extraction: This is the process of transforming raw, often non-numeric data, into a set of numerical features that can be fed into a machine learning model.
+
+DictVectorizer: This transformer is particularly useful when your data is in the form of a list of dictionaries, where each dictionary represents a sample and the keys are feature names. DictVectorizer converts this into a numerical feature matrix, where each feature name becomes a column.
+
+FeatureHasher: This is a more memory-efficient alternative to DictVectorizer, especially for high-dimensional data. Instead of creating a dictionary of feature names, it uses a hashing function to map feature names to column indices. This is faster and uses less memory, but the downside is that it's not possible to reverse the transformation to get the original feature names.
+
+Handling Missing Values: Missing data is a common problem in real-world datasets. Most machine learning algorithms cannot handle missing values, so they need to be addressed before model training.
+
+Imputation: This is the process of filling in missing values. Sklearn provides several tools for this in the sklearn.impute module.
+
+SimpleImputer: This is the most basic imputation strategy. It can fill missing values with the mean, median, or most_frequent value of the column, or with a constant value.
+
+KNNImputer: This is a more sophisticated imputation method that uses a k-nearest neighbors approach. It fills missing values in a sample by looking at the values of its nearest neighbors in the feature space.
+

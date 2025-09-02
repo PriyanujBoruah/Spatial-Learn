@@ -1,0 +1,38 @@
+Module 3: Model Inspection, Inference, and Evaluation 📊
+This module covers what to do after you've trained your model: how to inspect it, use it for predictions, and evaluate its performance.
+
+Model Inspection: Once the SGDRegressor is trained, you can inspect its learned parameters to understand the relationships it has found in the data.
+
+Weights (coef_): The linear_regressor.coef_ attribute contains the learned weights (coefficients) for each feature, representing the feature's importance and its relationship with the target variable.
+
+Intercept (intercept_): The linear_regressor.intercept_ attribute contains the intercept (or bias) term of the linear model.
+
+Model Inference: Making predictions on new, unseen data is straightforward.
+
+Arrange the new data into a feature matrix with the same shape as the training data (#samples, #features).
+
+Call the predict() method on the trained regressor object.
+
+General Steps for Model Evaluation:
+
+Split your data into training and test sets.
+
+Fit the estimator on the training set.
+
+Calculate the training error (empirical error).
+
+Calculate the test error (generalization error) to assess how well the model performs on unseen data.
+
+Evaluation Metrics (sklearn.metrics): Scikit-learn provides a variety of metrics to evaluate regression models.
+
+r2_score: This is the same as the score() method and calculates the coefficient of determination (R²), which indicates the proportion of the variance in the target variable that is predictable from the features. A score of 1 is a perfect prediction, and a score of 0 means the model is no better than just predicting the mean.
+
+Error Metrics: These should be minimized (lower is better).
+
+mean_absolute_error
+
+mean_squared_error
+
+median_absolute_error (robust to outliers)
+
+Scoring Metrics: For these, higher is better. Error metrics can be converted to scores by adding a neg_ prefix (e.g., neg_mean_squared_error).

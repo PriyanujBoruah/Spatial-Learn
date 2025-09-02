@@ -1,0 +1,9 @@
+Week 12 of the "Machine Learning Practice" course focuses on Unsupervised Learning, a paradigm of machine learning where the algorithm learns from unlabeled data. Unlike supervised learning, where the goal is to predict a known outcome, unsupervised learning aims to discover hidden patterns, structures, and relationships within the data itself.
+
+The week explores two primary categories of unsupervised learning:
+
+Clustering: This involves grouping similar data points together into clusters. The key idea is that items within the same cluster are more similar to each other than to those in other clusters. The course revisits several clustering algorithms, likely comparing and contrasting their strengths and weaknesses for different types of data distributions.
+
+Dimensionality Reduction: This set of techniques is used to reduce the number of features (or dimensions) in a dataset while retaining as much of the original information as possible. The primary method discussed is Principal Component Analysis (PCA), which is used for feature extraction and data compression.
+
+By the end of this week, you will have a solid understanding of the fundamental concepts of unsupervised learning and will be able to apply key algorithms like K-Means and PCA to discover insights from unlabeled data.

@@ -1,0 +1,22 @@
+Module 3: Advanced Classification - Multi-Learning Scenarios 🌐
+This module expands your classification toolkit to handle problems that go beyond simple binary classification. You will learn to identify and solve multiclass, multilabel, and multi-output problems.
+
+Understanding Multi-Learning Problems:
+
+Multiclass Classification: A task where each sample belongs to exactly one of more than two classes (e.g., classifying handwritten digits 0-9).
+
+Multilabel Classification: A task where each sample can be assigned multiple labels simultaneously (e.g., tagging a movie with genres like 'action', 'comedy', and 'thriller').
+
+Multiclass Multi-output Classification: A task where each sample has multiple outputs, and each output is a multiclass classification problem.
+
+Strategies for Multiclass Classification: While some classifiers (like LogisticRegression(multi_class='multinomial')) are inherently multiclass, binary classifiers can be extended using meta-estimators:
+
+One-vs-Rest (OVR): Implemented with OneVsRestClassifier. This strategy fits one classifier per class, treating that class as the positive class and all other classes as the negative class. It is computationally efficient as it only requires training k classifiers for k classes.
+
+One-vs-One (OVO): Implemented with OneVsOneClassifier. This strategy fits one classifier for every pair of classes. At prediction time, the class that receives the most "votes" is chosen. This can be more efficient for algorithms that do not scale well with the number of samples.
+
+Handling Multilabel and Multi-output Problems:
+
+MultiOutputClassifier: This strategy fits one classifier per target. This approach treats each label as a separate classification problem.
+
+ClassifierChain: This is a more advanced strategy that arranges binary classifiers in a chain. The prediction of the first classifier is passed as a feature to the second, the predictions of the first two are passed to the third, and so on. This allows the model to exploit correlations among the target labels.

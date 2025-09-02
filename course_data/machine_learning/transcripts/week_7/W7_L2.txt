@@ -1,0 +1,25 @@
+Module 2: Implementing KNeighborsClassifier 🧑‍💻
+This module provides a deep dive into the practical implementation and key hyperparameters of the KNeighborsClassifier, the most common KNN algorithm.
+
+Basic Implementation: Using KNeighborsClassifier in Scikit-Learn is straightforward. You first instantiate the classifier and then fit it to your training data.
+
+Python
+
+from sklearn.neighbors import KNeighborsClassifier
+
+# Instantiate the classifier
+kneighbor_classifier = KNeighborsClassifier()
+
+# Fit the model to the training data
+kneighbor_classifier.fit(X_train, y_train)
+Key Hyperparameters:
+
+n_neighbors: This is the 'k' in KNN and specifies the number of nearest neighbors to use for classification. The default value is 5. Choosing the right 'k' is a critical step in building an effective KNN model.
+
+weights: This parameter determines how the votes of the neighbors are weighted.
+
+'uniform' (Default): All neighbors in the neighborhood are given an equal vote.
+
+'distance': Neighbors are weighted by the inverse of their distance from the new point. This means that closer neighbors will have a greater influence on the final prediction than neighbors that are further away.
+
+Custom Function: You can also provide your own callable function that takes an array of distances and returns an array of weights.

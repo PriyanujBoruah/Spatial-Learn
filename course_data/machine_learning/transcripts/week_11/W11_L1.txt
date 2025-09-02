@@ -1,0 +1,28 @@
+Module 1: Introduction to Multilayer Perceptron (MLP) 🧠
+This module introduces the Multilayer Perceptron, a fundamental type of neural network, and explains its implementation in Scikit-Learn for both classification and regression.
+
+What is an MLP?: A Multilayer Perceptron is a supervised learning algorithm that learns a non-linear function by training on a dataset. It is composed of an input layer, one or more hidden layers, and an output layer. This layered architecture allows the MLP to learn more complex patterns than linear models.
+
+MLP for Classification and Regression: Scikit-Learn provides two primary classes for implementing MLPs:
+
+MLPClassifier: This is used for classification problems. It supports multi-class classification by using a Softmax function in the output layer, which provides probability estimates for each class. It can also be used for multi-label classification.
+
+MLPRegressor: This is used for regression problems where the goal is to predict a continuous value. It uses a linear activation function in the output layer and optimizes the squared error loss function. It also supports multi-output regression.
+
+Basic Implementation: The implementation process is consistent with other Scikit-Learn models. You first instantiate the model, then fit it to your training data.
+
+Python
+
+from sklearn.neural_network import MLPClassifier
+
+# 1. Instantiate the classifier
+mlp_clf = MLPClassifier()
+
+# 2. Fit the model to the training data
+mlp_clf.fit(X_train, y_train)
+
+# 3. Make predictions
+predictions = mlp_clf.predict(X_test)
+
+# You can also get probability estimates for classification
+probabilities = mlp_clf.predict_proba(X_test)

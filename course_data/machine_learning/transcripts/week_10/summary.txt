@@ -1,0 +1,13 @@
+Based on the course progression from the previous weeks and typical advanced machine learning curricula, Week 10 likely moves into more sophisticated unsupervised learning techniques, specifically focusing on advanced clustering algorithms. While Hierarchical Agglomerative Clustering (HAC) was introduced in Week 9, this week would expand on that foundation by exploring different types of clustering that can handle more complex data structures.
+
+The key topics for Week 10 would include:
+
+Density-Based Clustering: This introduces a different paradigm from the distance-based methods like K-Means or the linkage-based methods of HAC. The focus is on identifying dense regions of data points, which allows for the discovery of arbitrarily shaped clusters and the effective identification of noise or outliers. The primary algorithm covered here would be DBSCAN (Density-Based Spatial Clustering of Applications with Noise).
+
+Distribution-Based Clustering: This approach assumes that the data is generated from a mixture of several probability distributions. The goal is to find the parameters of these distributions that best fit the data. The main algorithm in this category is the Gaussian Mixture Model (GMM), which uses the Expectation-Maximization (EM) algorithm to find the parameters of the Gaussian distributions that make up the clusters.
+
+Clustering Evaluation Metrics: A crucial aspect of unsupervised learning is evaluating the quality of the clusters without having ground truth labels. This week would introduce various metrics for this purpose:
+
+Internal Evaluation Metrics: These are used when there are no ground truth labels and measure the quality of the clustering based on the compactness and separation of the clusters. Examples include the Silhouette Score and the Davies-Bouldin Index.
+
+External Evaluation Metrics: These are used when ground truth labels are available (e.g., for benchmarking) and compare the predicted clusters to the true class labels. Examples include the Adjusted Rand Index (ARI) and Normalized Mutual Information (NMI).

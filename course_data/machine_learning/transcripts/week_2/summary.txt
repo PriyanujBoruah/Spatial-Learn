@@ -1,0 +1,17 @@
+Week 2 provides a comprehensive overview of data preprocessing techniques, which are essential for preparing data for machine learning algorithms. The week is divided into several key areas, each focusing on different aspects of data transformation and feature engineering.
+
+Feature Extraction: The week starts with an introduction to feature extraction, which involves converting raw data, such as lists of dictionaries, into a numerical format that can be used by machine learning models. Key tools for this are DictVectorizer, which converts lists of mappings into a matrix, and FeatureHasher, a high-speed, low-memory alternative that uses feature hashing.
+
+Data Cleaning: A significant portion of the week is dedicated to data cleaning, particularly handling missing values. The course covers two main approaches: SimpleImputer, which fills missing values using simple strategies like the mean, median, or most frequent value, and KNNImputer, which uses a k-nearest neighbors approach to impute missing values based on the values of similar data points.
+
+Feature Scaling and Transformation: To ensure that all features are on a comparable scale, which is crucial for many machine learning algorithms, the week introduces several scaling techniques. These include StandardScaler for standardizing features to have a mean of 0 and a standard deviation of 1, MinMaxScaler for scaling features to a range between 0 and 1, and MaxAbsScaler for scaling features to a range between -1 and 1. The week also covers other transformations like polynomial feature generation and discretization using KBinsDiscretizer.
+
+Categorical Transformers: The course explains how to handle categorical data by converting it into a numerical format. Key transformers for this include OneHotEncoder for creating binary columns for each category, LabelEncoder for encoding target labels, and OrdinalEncoder for encoding categorical features with an inherent order.
+
+Feature Selection: The week also covers feature selection techniques, which are used to select the most relevant features for a machine learning model. These are broadly categorized into:
+
+Filter-based methods, such as VarianceThreshold, SelectKBest, and SelectPercentile, which use statistical measures to score and select features.
+
+Wrapper-based methods, such as Recursive Feature Elimination (RFE) and SelectFromModel, which use a machine learning model to evaluate and select features.
+
+Dimensionality Reduction: Finally, the week introduces dimensionality reduction with a focus on Principal Component Analysis (PCA), a technique for reducing the number of features in a dataset while retaining as much information as possible.

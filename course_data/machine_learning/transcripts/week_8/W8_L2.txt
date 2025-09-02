@@ -1,0 +1,28 @@
+Module 2: Voting and Bagging Estimators 🗳️
+This module introduces two fundamental ensemble techniques: Voting, which combines the predictions of different models, and Bagging, which combines the predictions of the same model trained on different subsets of the data.
+
+Voting Estimators: The idea behind voting is to combine the predictions of several different machine learning models to make a more robust prediction.
+
+VotingClassifier: This is a meta-estimator that trains multiple models and predicts the class label based on a majority vote of the individual classifiers.
+
+voting='hard': The predicted class is the one that receives the most votes.
+
+voting='soft': The predicted class is based on the average of the predicted probabilities from each classifier. This is often preferred if the classifiers are well-calibrated.
+
+VotingRegressor: This works similarly but for regression tasks, where the final prediction is the average of the predictions from the individual regressors.
+
+Bagging Estimators (Bootstrap Aggregating): Bagging is a technique designed to reduce the variance of a model by introducing randomization.
+
+How it Works: It involves creating multiple subsets of the training data by drawing samples with replacement (bootstrapping). A separate model (or "base estimator") is then trained on each of these subsets. The final prediction is made by aggregating the predictions of all the models, either by voting (for classification) or averaging (for regression).
+
+Implementation in Scikit-Learn: BaggingClassifier and BaggingRegressor are the main classes.
+
+Key Hyperparameters:
+
+base_estimator: The machine learning algorithm to be used for each model in the ensemble (e.g., a DecisionTreeClassifier).
+
+n_estimators: The number of base estimators (models) to be trained.
+
+max_samples: The number or fraction of samples to draw from the training data to train each base estimator.
+
+bootstrap: A boolean indicating whether to use sampling with replacement.

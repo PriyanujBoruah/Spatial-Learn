@@ -1,0 +1,18 @@
+Module 2: Preventing Overfitting with Regularization 🛡️
+This module introduces regularization as a fundamental technique for controlling model complexity and preventing overfitting, a common problem in machine learning.
+
+The Problem of Overfitting: Overfitting occurs when a model learns the training data too well, including the noise, and as a result, fails to generalize to new, unseen data. This is often a problem with complex models like high-degree polynomial regression.
+
+Ridge Regression (L2 Regularization):
+
+Concept: Ridge regression adds a penalty to the loss function that is proportional to the square of the magnitude of the model's coefficients (the L2 norm). This "shrinks" the coefficients towards zero, making the model less sensitive to individual data points and thus more robust.
+
+Implementation: You can implement Ridge regression using the Ridge estimator or by setting penalty='l2' in the SGDRegressor. The strength of the regularization is controlled by the alpha parameter; a larger alpha results in stronger regularization.
+
+Lasso Regression (L1 Regularization):
+
+Concept: Lasso regression adds a penalty proportional to the absolute value of the coefficients (the L1 norm). A key difference from Ridge is that Lasso can shrink some coefficients all the way to zero, effectively removing those features from the model. This makes Lasso useful for both regularization and automatic feature selection.
+
+Implementation: You can use the Lasso estimator or set penalty='l1' in the SGDRegressor. The alpha parameter again controls the regularization strength.
+
+Elastic Net: This is a hybrid approach that combines both L1 and L2 regularization. It is implemented in SGDRegressor with penalty='elasticnet' and allows you to balance the two penalties using the l1_ratio parameter.

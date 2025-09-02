@@ -1,0 +1,7 @@
+Week 5 transitions from regression to classification, exploring how to build and evaluate models that predict categorical labels. The week provides a comprehensive tour of Scikit-Learn's classification APIs, covering both specific, direct-implementation classifiers and a more generic, flexible classifier.
+
+A core theme is the distinction between specific classifiers like RidgeClassifier, Perceptron, and LogisticRegression, and the generic SGDClassifier. The latter can be configured to behave like various linear classifiers by simply adjusting its loss parameter, making it a powerful tool for large-scale learning tasks. The week delves into key hyperparameters for these models, including regularization techniques (L1 and L2 penalties), optimization solvers, and methods for handling class imbalance.
+
+The curriculum then expands beyond simple binary classification to cover multi-learning scenarios. It introduces the concepts of multiclass, multilabel, and multi-output classification. You will learn about meta-estimators and strategies like One-vs-Rest (OneVsRestClassifier) and One-vs-One (OneVsOneClassifier) that extend binary classifiers to handle these more complex problems.
+
+Finally, the week emphasizes the critical importance of model evaluation. It introduces a suite of classification-specific metrics such as the confusion matrix, accuracy, precision, recall, and f1-score. To ensure robust and unbiased performance estimates, especially in the presence of class imbalance, the module covers stratified cross-validation techniques.

@@ -1,0 +1,15 @@
+Week 8 delves into the powerful world of ensemble methods, which combine multiple machine learning models to produce a more robust and accurate prediction than any single model. The week begins with a foundational understanding of Decision Trees, which are the building blocks for many advanced ensemble techniques.
+
+The core of the week is dedicated to three main families of ensemble methods:
+
+Voting: This is the simplest approach, where multiple different models are trained, and their predictions are combined through a majority vote (for classification) or by averaging (for regression). This is implemented in scikit-learn using VotingClassifier and VotingRegressor.
+
+Bagging (Bootstrap Aggregating): This method involves training the same algorithm on multiple random subsets of the training data (with replacement). By averaging the predictions of these models, bagging helps to reduce variance and prevent overfitting. The quintessential example of a bagging method is the Random Forest, which is an ensemble of decision trees.
+
+Boosting: This technique builds a sequence of models, where each new model attempts to correct the errors of its predecessor. Models are added one after another in a series, gradually building a strong classifier from a number of "weak" ones. The week covers two popular boosting algorithms:
+
+AdaBoost (Adaptive Boosting): This method focuses on training samples that were misclassified by previous models by adjusting their weights.
+
+Gradient Boosting: This is a more generalized boosting framework where a new model is trained to predict the residual errors of the previous model.
+
+By the end of Week 8, you will have a solid understanding of how to build, configure, and apply various ensemble methods to improve the performance and robustness of your machine learning models.

@@ -1,0 +1,36 @@
+Module 2: Hyperparameters and Optimization in SGDRegressor ⚙️
+This module dives deep into the various hyperparameters of SGDRegressor, giving you fine-grained control over the model's training process.
+
+Loss Functions: The loss parameter determines the function to be minimized.
+
+loss='squared_error': This is the standard choice for Ordinary Least Squares (OLS) regression.
+
+loss='huber': The Huber loss is less sensitive to outliers, making it a good choice for robust regression.
+
+Regularization: The penalty parameter adds a regularization term to the loss function to prevent overfitting.
+
+penalty='l2': This is the default and corresponds to Ridge Regression.
+
+penalty='l1': Corresponds to Lasso Regression and can lead to sparse solutions where some feature weights become zero.
+
+penalty='elasticnet': A combination of L1 and L2 regularization.
+
+Learning Rate Schedule: The learning_rate parameter controls how the learning rate changes over time.
+
+'constant': The learning rate remains fixed at the initial value (eta0).
+
+'invscaling' (default): The learning rate is gradually decreased at each iteration. The formula is  eta = eta0 / pow(t, power_t).
+
+'adaptive': The learning rate is kept constant as long as the training loss is decreasing. When the stopping criterion is met, the learning rate is divided by 5.
+
+Epochs and Stopping Criteria:
+
+Epochs (max_iter): An epoch is one full pass over the training data. The max_iter parameter sets the maximum number of epochs. A good starting point is max_iter = np.ceil(10**6 / n), where n is the number of samples.
+
+Stopping Criteria: SGDRegressor provides two main ways to stop training early:
+
+Based on Training Loss: The algorithm can stop if the training loss does not improve by at least tol for n_iter_no_change consecutive epochs.
+
+Based on Validation Score (early_stopping=True): The data is split into a training and a validation set. The algorithm stops if the validation score does not improve by at least tol for n_iter_no_change consecutive epochs.
+
+Averaged SGD: By setting average=True, the model will use the average of the weights from previous updates, which can lead to more stable performance.

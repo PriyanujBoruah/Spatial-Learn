@@ -1,0 +1,20 @@
+Module 3: Algorithms for Finding Neighbors 🌳
+This module explores the different algorithms that can be used to efficiently find the nearest neighbors, a critical component of the KNN model's performance.
+
+The algorithm Parameter: This parameter specifies the algorithm to be used to compute the nearest neighbors.
+
+'brute': This uses a brute-force search, calculating the distance between the new point and every single point in the training data. While simple, it can be very slow for large datasets.
+
+'kd_tree': This uses a data structure called a KD-tree to organize the training data, which can significantly speed up the search for nearest neighbors.
+
+'ball_tree': This uses a Ball Tree data structure, which is effective for data in high-dimensional spaces.
+
+'auto' (Default): This setting will automatically attempt to decide the most appropriate algorithm based on the data passed to the fit method.
+
+Parameters for Tree-Based Algorithms: When using 'ball_tree' or 'kd_tree', you can further tune their performance with these parameters:
+
+leaf_size: This determines the number of points at which the algorithm switches from building the tree to a brute-force search. The default is 30. This can affect the speed of both the tree's construction and the query time, as well as the memory required to store the tree.
+
+metric: This specifies the distance metric to use for the tree. The default is 'minkowski'. Other common choices include 'euclidean' and 'manhattan'.
+
+p: This is the power parameter for the Minkowski metric. A value of p=2 (the default) corresponds to the Euclidean distance, while p=1 corresponds to the Manhattan distance.

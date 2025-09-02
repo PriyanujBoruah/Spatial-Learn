@@ -1,0 +1,28 @@
+Module 4: Introduction to Clustering - Hierarchical Agglomerative Clustering (HAC) 🧩
+This module shifts from supervised to unsupervised learning, introducing the fundamental concept of clustering and providing a detailed look at Hierarchical Agglomerative Clustering (HAC).
+
+What is Clustering?: Clustering is an unsupervised learning task that involves grouping a set of data points in such a way that points in the same group (or cluster) are more similar to each other than to those in other groups.
+
+Hierarchical Agglomerative Clustering (HAC): HAC is a "bottom-up" clustering approach.
+
+Algorithm:
+
+Start by treating each data point as its own cluster.
+
+Calculate the distance between all pairs of clusters.
+
+Merge the two closest clusters into a single cluster.
+
+Repeat steps 2 and 3 until all data points are in a single cluster.
+
+The result is a tree-like structure of clusters called a dendrogram, which can be cut at a certain level to obtain a desired number of clusters.
+
+Linkage Criteria (linkage): The linkage parameter determines how the distance between clusters is calculated.
+
+'single': The distance between two clusters is the shortest distance between any two points in the two clusters.
+
+'complete': The distance is the maximum distance between any two points in the two clusters.
+
+'average': The distance is the average distance between all pairs of points in the two clusters.
+
+'ward': This method merges the two clusters that result in the minimum increase in the total within-cluster variance.

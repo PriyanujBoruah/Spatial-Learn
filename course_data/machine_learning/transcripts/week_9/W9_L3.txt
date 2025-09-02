@@ -1,0 +1,24 @@
+Module 3: Training and Optimizing the MLP ⚙️
+This module covers the process of training an MLP, focusing on the different optimization algorithms (solvers) and other parameters that control the learning process.
+
+Weight Optimization (solver): The solver parameter determines the algorithm used to optimize the model's weights.
+
+'lbfgs': An optimizer in the family of quasi-Newton methods. It is effective on small datasets but can be slow on large ones.
+
+'sgd': Stochastic Gradient Descent.
+
+'adam' (Default): A stochastic gradient-based optimizer that is computationally efficient and works well on relatively large datasets.
+
+Learning Rate Parameters: When using 'sgd' or 'adam', you can control the learning rate:
+
+learning_rate_init: The initial learning rate.
+
+learning_rate: The learning rate schedule for 'sgd'. Can be 'constant', 'invscaling', or 'adaptive'.
+
+max_iter: The maximum number of iterations (epochs).
+
+Inspecting the Trained Model: After training, you can inspect the learned parameters of the model:
+
+coefs_: A list of weight matrices, where the element at index i is the weight matrix for layer i.
+
+intercepts_: A list of bias vectors, where the element at index i is the bias vector for layer i.

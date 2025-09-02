@@ -1,0 +1,30 @@
+Module 4: Evaluating Classifier Performance ✅
+This module provides you with the essential tools and techniques for evaluating the performance of your classification models, ensuring that your assessments are robust and meaningful.
+
+Stratified Cross-Validation: When dealing with classification problems, especially those with class imbalance, standard cross-validation can lead to folds that do not represent the overall class distribution. Stratified cross-validation iterators (StratifiedKFold, RepeatedStratifiedKFold) ensure that each fold has the same proportion of each class as the original dataset, leading to more reliable performance estimates.
+
+The Confusion Matrix: This is a fundamental tool for understanding a classifier's performance. It is a table that shows the number of correct and incorrect predictions for each class.
+
+confusion_matrix: This function from sklearn.metrics computes the confusion matrix.
+
+ConfusionMatrixDisplay: This provides a convenient way to visualize the matrix, either from an estimator or from predictions.
+
+Key Classification Metrics:
+
+accuracy_score: The proportion of correctly classified samples. Can be misleading on imbalanced datasets.
+
+precision_score: The ability of the classifier not to label as positive a sample that is negative.
+
+recall_score: The ability of the classifier to find all the positive samples.
+
+f1_score: The harmonic mean of precision and recall, providing a single score that balances both.
+
+classification_report: This function builds a text report showing the main classification metrics for each class.
+
+Extending Binary Metrics to Multi-Learning Problems: When evaluating multiclass or multilabel problems, you can average the binary metrics across all classes using the average parameter:
+
+'macro': Calculates the mean of the binary metrics, giving equal weight to each class.
+
+'weighted': Computes the average of binary metrics, weighted by the number of true instances for each class.
+
+'micro': Gives each sample-class pair an equal contribution to the overall metric.

@@ -1,0 +1,34 @@
+Module 1: Decision Trees - The Building Blocks of Ensembles 🌳
+This module covers the fundamentals of Decision Trees, which are non-parametric supervised learning models that can be used for both classification and regression tasks.
+
+What is a Decision Tree?: A decision tree learns a set of if-then-else rules from the data to make predictions. It is a hierarchical, tree-like structure where each internal node represents a test on a feature, each branch represents the outcome of the test, and each leaf node represents a class label (in classification) or a continuous value (in regression).
+
+Tree Algorithms: There are several algorithms for building decision trees, each with its own approach to splitting the data:
+
+ID3 (Iterative Dichotomiser 3): Creates a multiway tree.
+
+C4.5: An improvement over ID3, it can handle both continuous and discrete features and can convert the trained tree into a set of if-then rules.
+
+C5.0: A more recent version that is more memory-efficient and builds smaller rule sets.
+
+CART (Classification and Regression Trees): This is the algorithm used by scikit-learn. It supports numerical target variables (regression) and creates binary splits (trees with two branches at each node).
+
+Implementation in Scikit-Learn:
+
+DecisionTreeClassifier and DecisionTreeRegressor: These are the main classes for implementing decision trees in scikit-learn.
+
+Key Hyperparameters:
+
+criterion: The function used to measure the quality of a split (e.g., 'gini' or 'entropy' for classification, 'squared_error' for regression).
+
+max_depth: The maximum depth of the tree. This is a key parameter for controlling the complexity of the tree and preventing overfitting.
+
+min_samples_split: The minimum number of samples required to split an internal node.
+
+min_samples_leaf: The minimum number of samples required to be at a leaf node.
+
+Avoiding Overfitting: Decision trees are prone to overfitting, especially when they are deep. There are two main strategies to combat this:
+
+Pre-pruning: This involves stopping the growth of the tree early by tuning hyperparameters like max_depth, min_samples_split, and min_samples_leaf.
+
+Post-pruning (Cost-Complexity Pruning): This involves growing the tree to its full depth and then pruning it back by removing branches that provide little predictive power.

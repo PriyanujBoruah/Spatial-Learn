@@ -1,0 +1,26 @@
+Module 2: The Versatile SGDClassifier 🛠️
+This module focuses entirely on the SGDClassifier, a powerful and efficient tool for large-scale linear classification. You will learn why it's considered a "generic" classifier and how to configure it for various tasks.
+
+A Generic and Efficient Approach: SGDClassifier is a simple yet highly efficient approach to fitting linear classifiers under convex loss functions. Its main advantages are its efficiency and ease of implementation, making it ideal for large datasets with more than 10^5 samples or features. However, it requires a number of hyperparameters and is sensitive to feature scaling.
+
+The Power of the loss Parameter: The versatility of SGDClassifier comes from its loss parameter. By changing the loss function, you can implement several different linear models:
+
+loss='hinge' (Default): Implements a linear Support Vector Machine (SVM).
+
+loss='log': Implements Logistic Regression.
+
+loss='perceptron': Implements the Perceptron algorithm.
+
+Other losses like 'modified_huber' and 'squared_hinge' offer variations with different properties, such as tolerance to outliers.
+
+Implementation and Training:
+
+Instantiate: You first create an instance of SGDClassifier, specifying the desired loss function.
+
+Fit: You then call the fit() method with your training data. It is crucial to shuffle your training data before each epoch and to standardize your features for best results.
+
+Key Hyperparameters:
+
+Regularization: You can apply 'l2', 'l1', or 'elasticnet' penalties using the penalty and alpha parameters, similar to other linear models.
+
+Learning Rate and Stopping Criteria: Just like SGDRegressor, you have full control over the learning rate schedule and the criteria for stopping the training process (e.g., max_iter, early_stopping).

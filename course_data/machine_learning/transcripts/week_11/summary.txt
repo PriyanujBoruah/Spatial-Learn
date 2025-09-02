@@ -1,0 +1,7 @@
+Week 11 introduces Neural Network models in Scikit-Learn, with a primary focus on the Multilayer Perceptron (MLP). This week transitions from traditional machine learning models to the foundational concepts of neural networks, explaining how MLPs can learn complex, non-linear patterns for both classification and regression tasks.
+
+The week covers the implementation of MLPs using Scikit-Learn's MLPClassifier and MLPRegressor. A significant portion is dedicated to understanding the key hyperparameters that define the network's architecture and control its learning process. This includes setting the number and size of hidden layers, choosing an activation function (like 'relu', 'tanh', or 'logistic'), and applying L2 regularization with the alpha parameter to prevent overfitting.
+
+Furthermore, the week details the different optimization algorithms, or solvers (adam, sgd, lbfgs), that are used to train the network by finding the optimal weights. You will learn how to configure parameters related to the learning process, such as the learning rate and the maximum number of iterations.
+
+Finally, the module explains how to inspect a trained MLP model. After fitting the model, you can access its learned parameters, including the weight matrices (coefs_) and bias vectors (intercepts_), to gain insights into what the network has learned.

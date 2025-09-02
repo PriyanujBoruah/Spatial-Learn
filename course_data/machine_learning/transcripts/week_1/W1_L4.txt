@@ -1,0 +1,28 @@
+Module 4: Data Transformation and Preparation
+This module covers the different types of data transformations in Scikit-Learn and how to use them to prepare data for machine learning models.
+
+Types of Transformers: Sklearn provides a library of transformers for various data preprocessing tasks:
+
+Data Cleaning (sklearn.preprocessing): This includes transformers for scaling, centering, normalization, and binarization of data.
+
+Feature Extraction (sklearn.feature_extraction): These transformers are used to extract features from raw data, such as text or images.
+
+Feature Reduction: These transformers are used to reduce the number of features in a dataset, which can help to prevent overfitting and improve model performance.
+
+Feature Expansion (sklearn.kernel_approximation): These transformers are used to create new features by applying non-linear transformations to the existing features.
+
+Transformer Methods: All transformers in sklearn have a consistent interface with the following methods:
+
+fit(): This method learns the parameters of the transformation from a training set.
+
+transform(): This method applies the learned transformation to new data.
+
+fit_transform(): This method combines the fit() and transform() methods into a single step, which is more convenient and efficient.
+
+Composite Estimators: Transformers can be combined with other estimators (like classifiers or regressors) to build composite estimators, or "pipelines." This allows you to chain multiple data preprocessing and modeling steps together into a single object.
+
+Pipeline: This tool allows you to chain multiple estimators together to execute a fixed sequence of steps in data preprocessing and modeling.
+
+FeatureUnion: This tool combines the output from several transformer objects by creating a new transformer from them.
+
+ColumnTransformer: This tool enables you to apply different transformations to different columns of your data based on their types (e.g., applying one-hot encoding to categorical columns and scaling to numerical columns).

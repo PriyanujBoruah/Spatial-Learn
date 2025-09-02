@@ -1,0 +1,16 @@
+Module 4: Model Inspection and Practical Considerations 🔬
+This final module covers how to look inside a trained MLP to understand what it has learned and provides practical tips for using these models effectively.
+
+Inspecting the Trained Model: After the model has been trained, you can access its learned parameters to gain insights into its internal workings.
+
+coefs_ (Weight Matrices): This attribute is a list of weight matrices for each layer. The element at index i in the list is the weight matrix for the connection between layer i and layer i+1.
+
+intercepts_ (Bias Vectors): This attribute is a list of bias vectors. The element at index i is the bias vector for the neurons in layer i+1.
+
+Practical Considerations:
+
+Feature Scaling: MLPs are sensitive to feature scaling, so it is highly recommended to scale your data before training. StandardScaler is a common choice.
+
+Complexity and Training Time: MLPs can have many hyperparameters, and finding the best combination can be a computationally intensive process.
+
+Interpretability: Unlike simpler models like linear regression or decision trees, MLPs are often considered "black box" models, as it can be challenging to interpret exactly how they are making their predictions.

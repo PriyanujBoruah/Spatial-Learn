@@ -1,0 +1,32 @@
+Module 4: Robust Evaluation with Cross-Validation 🔄
+This module introduces cross-validation as a more robust method for evaluating model performance and estimating its ability to generalize to new data.
+
+Why Cross-Validation?: A simple train-test split can be sensitive to how the data is divided. Cross-validation provides a more reliable estimate of the model's generalization performance by repeatedly splitting the data into training and validation sets and averaging the results.
+
+Cross-Validation Iterators in Scikit-learn:
+
+KFold: This is a common strategy where the data is divided into 'k' folds. In each iteration, one fold is used for testing, and the remaining k-1 folds are used for training.
+
+LeaveOneOut: This is an extreme case of K-Fold where k is equal to the number of samples. Each sample is used as a test set once.
+
+ShuffleSplit: This method creates a specified number of independent train/test splits by randomly shuffling and sampling the data. This provides more flexibility in controlling the size of the test set and the number of iterations.
+
+Using cross_val_score: This is a convenient function for performing cross-validation and getting the scores for each fold.
+
+Python
+
+from sklearn.model_selection import cross_val_score, KFold
+
+kfold_cv = KFold(n_splits=5, shuffle=True, random_state=42)
+scores = cross_val_score(linear_regressor, X, y, cv=kfold_cv, scoring='neg_mean_squared_error')
+Using cross_validate for More Detailed Results: While cross_val_score only returns the test scores, cross_validate can provide more detailed information in a dictionary, including:
+
+fit_time and score_time for each fold.
+
+test_score.
+
+train_score (if return_train_score=True).
+
+The trained estimator for each fold (if return_estimator=True).
+
+Diagnosing Underfitting/Overfitting: By plotting the training and test errors as a function of the number of training samples (using the learning_curve function), you can diagnose whether your model is suffering from underfitting (high bias) or overfitting (high variance).

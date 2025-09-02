@@ -1,0 +1,24 @@
+Module 2: Introduction to Scikit-Learn
+This module provides an overview of the Scikit-Learn library, its design principles, and its core components.
+
+Scikit-Learn's Design Principles: Sklearn is designed with consistency and ease of use in mind. All objects share a consistent interface, and datasets are represented as NumPy arrays or SciPy sparse matrices, avoiding the need for custom data structures. The library also emphasizes composition, allowing you to combine simple building blocks to create more complex models and pipelines.
+
+Types of Sklearn Objects:
+
+Estimators: These are objects that can learn from data. They have a fit() method that takes a dataset as input and learns the model parameters. Examples include classifiers, regressors, and clustering algorithms.
+
+Transformers: These objects are used to preprocess data. They have a transform() method that applies a transformation to a dataset, and a fit_transform() method that combines both fitting and transforming in a single step.
+
+Predictors: These are estimators that can make predictions on new data. They have a predict() method that returns the predicted labels or values, and a score() method that evaluates the quality of the predictions.
+
+Sklearn APIs: Sklearn is organized into several APIs, each serving a specific purpose in the machine learning workflow:
+
+Data API: Provides tools for loading, generating, and preprocessing data.
+
+Model API: Contains implementations of various supervised and unsupervised machine learning models.
+
+Model Evaluation API: Includes metrics and tools for evaluating the performance of models.
+
+Model Selection API: Offers methods for tasks like cross-validation and hyperparameter tuning.
+
+Model Inspection API: Provides tools for inspecting and understanding the learned models.

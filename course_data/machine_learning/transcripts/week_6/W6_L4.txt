@@ -1,0 +1,43 @@
+Module 4: Practical Implementation in Scikit-Learn 💻
+This module provides a practical guide to using Naive Bayes classifiers in Scikit-Learn, from training to prediction.
+
+General Workflow: The implementation of all Naive Bayes classifiers in Scikit-Learn follows a consistent pattern, making them easy to use.
+
+Import: First, you import the desired classifier from sklearn.naive_bayes.
+
+Instantiate: You then create an instance of the classifier.
+
+Fit: You train the model using the fit() method, passing the training features (X_train) and labels (y_train).
+
+Predict: You can then make predictions on new data using the predict() method.
+
+Example Implementation:
+
+Python
+
+from sklearn.naive_bayes import GaussianNB
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+
+# Assume X and y are your features and labels
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# 1. Instantiate the model
+gnb = GaussianNB()
+
+# 2. Fit the model
+gnb.fit(X_train, y_train)
+
+# 3. Make predictions
+y_pred = gnb.predict(X_test)
+
+# 4. Evaluate the model
+accuracy = accuracy_score(y_test, y_pred)
+print(f"Accuracy: {accuracy}")
+When to Use Naive Bayes:
+
+Quick Baseline: Due to its speed and simplicity, Naive Bayes is an excellent choice for establishing a baseline performance metric for your classification task.
+
+Text Classification: Multinomial and Bernoulli Naive Bayes are particularly effective for text-related tasks like spam detection and document categorization.
+
+Large Datasets: The algorithm's efficiency makes it suitable for very large datasets where more complex models might be too slow to train.

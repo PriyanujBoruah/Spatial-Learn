@@ -1,0 +1,26 @@
+Module 4: Dimensionality Reduction with PCA 📉
+This module revisits Principal Component Analysis (PCA), a powerful unsupervised learning technique for dimensionality reduction and feature extraction.
+
+The "Curse of Dimensionality": High-dimensional data can be problematic for machine learning algorithms. It can make them computationally expensive, prone to overfitting, and difficult to visualize.
+
+What is PCA?: PCA is a linear dimensionality reduction technique that transforms a set of correlated features into a smaller set of uncorrelated features called principal components. The goal is to retain as much of the original data's variance as possible.
+
+How PCA Works:
+
+Standardize the Data: PCA is sensitive to the scale of the features, so it's important to standardize the data first.
+
+Compute the Covariance Matrix: This matrix shows how the different features in the dataset are related to each other.
+
+Calculate Eigenvectors and Eigenvalues: The eigenvectors of the covariance matrix represent the principal components (the directions of maximum variance in the data), and the corresponding eigenvalues represent the amount of variance captured by each principal component.
+
+Select Principal Components: The principal components are ranked by their eigenvalues. You can then choose to keep the top k principal components that capture a desired amount of variance (e.g., 95%).
+
+Transform the Data: The original data is then projected onto the selected principal components to create a new, lower-dimensional feature space.
+
+Applications of PCA:
+
+Data Compression: By reducing the number of dimensions, PCA can significantly reduce the storage space required for a dataset.
+
+Data Visualization: By reducing the data to two or three dimensions, you can visualize high-dimensional datasets and look for patterns.
+
+Feature Extraction: PCA can be used as a preprocessing step to create a smaller set of features for a supervised learning model, which can improve performance and reduce overfitting.

@@ -1,0 +1,9 @@
+Week 7 introduces K-Nearest Neighbors (KNN), a simple yet effective non-parametric and instance-based learning algorithm. Unlike models that build a generalized internal model, KNN stores the entire training dataset and makes predictions based on the majority class of the nearest neighbors to a new data point. This makes it a type of "lazy learning" algorithm.
+
+The week covers the two primary implementations of nearest neighbors classifiers in Scikit-Learn:
+
+KNeighborsClassifier: This is the most common implementation, where classification is based on the k nearest neighbors. The choice of 'k' is crucial and highly data-dependent.
+
+RadiusNeighborsClassifier: This version classifies a point based on the neighbors found within a fixed radius 'r'. This approach can be advantageous for datasets that are not uniformly sampled.
+
+Key hyperparameters for these models are explored in detail. For KNeighborsClassifier, this includes n_neighbors (the 'k' value), weights (which can be 'uniform' or 'distance' to give more influence to closer points), and the algorithm used to find the neighbors ('ball_tree', 'kd_tree', or 'brute'). For RadiusNeighborsClassifier, the main parameter is radius. Both classifiers share parameters for the underlying algorithm, such as leaf_size and the distance metric (e.g., 'minkowski', 'euclidean').

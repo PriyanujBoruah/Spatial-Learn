@@ -1,0 +1,10 @@
+Module 1: The Theory Behind Naive Bayes 🧠
+This module introduces the fundamental concepts of the Naive Bayes classifier, including its probabilistic foundation and the key assumption that makes it "naive."
+
+Bayes' Theorem: At its heart, the Naive Bayes classifier is an application of Bayes' theorem. It calculates the probability of a certain class (Y) given a set of features (X), denoted as P(Y|X). Bayes' theorem provides a way to calculate this by using the probabilities of the features given the class, the prior probability of the class, and the prior probability of the features.
+
+The "Naive" Assumption of Conditional Independence: The key simplification in Naive Bayes is the assumption that every pair of features is conditionally independent given the class. This means that the presence of one feature does not affect the presence of another, given the class label. For a feature vector X = (x₁, x₂, ..., xₙ), this assumption is expressed as:
+P(xᵢ | Y, x₁, ..., xᵢ₋₁, xᵢ₊₁, ..., xₙ) = P(xᵢ | Y)
+This assumption dramatically simplifies the computation, as it allows the model to calculate the probability of the entire feature vector given the class by simply multiplying the individual probabilities of each feature given that class.
+
+Advantages: The main advantage of this naive assumption is that it makes the classifier extremely fast to train compared to more complex models. This makes it a great choice for a quick baseline model and for large datasets.

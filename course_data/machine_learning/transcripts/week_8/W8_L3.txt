@@ -1,0 +1,30 @@
+Module 3: Random Forests 🌲
+This module provides a deep dive into Random Forests, one of the most popular and powerful machine learning algorithms. A Random Forest is a specific implementation of a bagging ensemble where the base estimators are decision trees.
+
+What is a Random Forest?: A Random Forest is an ensemble of decision trees, typically trained with the bagging method. It combines the predictions of many decision trees to produce a more accurate and stable prediction.
+
+Key Idea - Introducing More Randomness: In addition to the randomness from bootstrapping the data, Random Forests also introduce randomness in how the individual trees are built. When splitting a node in a decision tree, a random subset of the features is considered, rather than all of them. This decorrelates the trees in the forest, which generally leads to a better model.
+
+Implementation in Scikit-Learn: RandomForestClassifier and RandomForestRegressor are the primary classes.
+
+Key Hyperparameters: A Random Forest has two sets of hyperparameters:
+
+Bagging Parameters: These control the bagging process, similar to the BaggingClassifier.
+
+n_estimators: The number of trees in the forest.
+
+bootstrap: Whether to use bootstrap samples for training.
+
+oob_score: If set to True, the model will use the out-of-bag samples (the ones not included in a tree's bootstrap sample) to estimate the generalization error.
+
+max_samples: The number of samples to draw for each tree.
+
+Decision Tree Parameters: These control the growth of the individual trees in the forest.
+
+criterion: The split quality metric.
+
+max_depth: The maximum depth of each tree.
+
+min_samples_split and min_samples_leaf.
+
+Feature Importance: After a Random Forest is trained, you can access the feature_importances_ attribute to get a measure of how important each feature was in making predictions. This is a valuable tool for feature selection and understanding your data.

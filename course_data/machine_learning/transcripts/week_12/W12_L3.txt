@@ -1,0 +1,32 @@
+Module 3: Advanced Clustering - DBSCAN and Hierarchical Clustering Revisited 🌳
+This module revisits two important clustering algorithms, DBSCAN and Hierarchical Clustering, which can overcome some of the limitations of K-Means.
+
+DBSCAN (Density-Based Spatial Clustering of Applications with Noise):
+
+Core Idea: DBSCAN is a density-based clustering algorithm that is particularly effective at finding non-spherical clusters and identifying noise. It groups together points that are closely packed together, marking as outliers points that lie alone in low-density regions.
+
+Key Concepts:
+
+Core Points: A point is a core point if it has at least a minimum number of other points (MinPts) within a specified radius (eps).
+
+Border Points: A point that is within the eps radius of a core point but is not a core point itself.
+
+Noise Points: Any point that is not a core or a border point.
+
+Advantages: It can find arbitrarily shaped clusters and is robust to outliers. It also does not require you to specify the number of clusters beforehand.
+
+Hierarchical Agglomerative Clustering (HAC):
+
+Core Idea: HAC is a "bottom-up" approach that creates a tree of clusters called a dendrogram. It starts with each data point as its own cluster and then progressively merges the closest clusters until only one cluster remains.
+
+Linkage Criteria: The linkage parameter determines how the distance between clusters is measured.
+
+'single': The distance between the closest points in the two clusters.
+
+'complete': The distance between the farthest points in the two clusters.
+
+'average': The average distance between all pairs of points in the two clusters.
+
+'ward': Merges the clusters that lead to the minimum increase in the within-cluster variance.
+
+Advantages: It produces a hierarchical structure that can be very informative, and it does not require you to specify the number of clusters in advance.
