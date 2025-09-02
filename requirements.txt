@@ -1,0 +1,10 @@
+flask
+google-generativeai
+python-dotenv
+langchain-google-genai
+langchain
+langchain-community
+faiss-cpu
+unstructured
+supabase-py
+gunicorn

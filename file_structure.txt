@@ -1,0 +1,27 @@
+/smart-learning-platform
+|
+|-- /course_data/
+|   |-- /business_analytics/
+|   |   |-- structure.json
+|   |   |-- /transcripts/
+|   |   |   |-- /week_1/
+|   |   |   |   |-- summary.txt
+|   |   |   |   |-- W1_L1.txt
+|   |
+|   |-- /machine_learning/
+|   |   |-- structure.json     <-- NEW
+|   |   |-- /transcripts/
+|   |   |   |-- /week_1/
+|   |   |   |   |-- summary.txt
+|   |   |   |   |-- W1_L1.txt
+|
+|-- /vector_store/             # Will be populated by the script
+|   |-- /business_analytics/
+|   |-- /machine_learning/
+|
+|-- app.py                     # <-- HEAVILY MODIFIED
+|-- process_data.py          # <-- HEAVILY MODIFIED
+|
+|-- /templates/
+    |-- selector.html          # <-- NEW FILE
+    |-- dashboard.html       # <-- MODIFIED
