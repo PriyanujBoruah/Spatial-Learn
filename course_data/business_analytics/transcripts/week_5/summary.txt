@@ -1,0 +1,42 @@
+Good morning, class.
+
+This week, we built upon our previous work on pricing and demand, exploring more sophisticated modeling techniques and then pivoting to the crucial topic of optimization. We answered not only "What is the relationship between price and demand?" but also "What should the price be?"
+
+Here is a recap of our journey this week.
+
+Lectures 1, 2, & 3: Modeling Non-Linear Demand with Transformations
+We began by revisiting the Constant Elasticity demand model, which posits a non-linear relationship between price and demand (D = C * p⁻ᵉ). We faced a challenge: how can we use Simple Linear Regression (SLR), a tool for linear relationships, to estimate the parameters of a non-linear curve?
+
+The answer lies in data transformation. We learned a powerful technique: by taking the natural logarithm of both sides of the equation, we convert it into a linear form:
+
+ln(D) = ln(C) - ε * ln(p)
+
+In this transformed equation, ln(D) becomes our new response variable (Y), ln(p) is our new explanatory variable (X), ln(C) is the intercept, and -ε is the slope.
+
+We then performed a hands-on exercise in Excel, running a regression on the log-transformed data. The results were excellent, with an R-squared of approximately 82%, indicating a strong fit. By interpreting the regression coefficients, we were able to successfully estimate the elasticity (ε) and the constant (C) for our non-linear model. This demonstrated that SLR is a more versatile tool than it first appears, capable of modeling curved relationships with the right transformations.
+
+Lectures 4, 5, & 6: Price Optimization: Revenue vs. Profit
+With the ability to model demand, we moved to the critical business question: What is the optimal price to charge? We discovered that the answer depends entirely on the objective.
+
+Revenue Maximization: We first set our objective to maximize total sales revenue (Revenue = Price × Demand). Using our previously estimated linear demand curve, we formulated the revenue equation. Through first-order calculus, we found the revenue-maximizing price for our sample data was $18.52.
+
+Profit Maximization: Next, we changed our objective to maximize profit (Profit = Revenue - Cost). We introduced a marginal cost of production (c = $15) and formulated the profit equation. Again, using calculus, we found the profit-maximizing price was $26.02.
+
+This led us to the most important insight of the week: the price that maximizes revenue is not the same as the price that maximizes profit. A business focused solely on top-line revenue will price differently than a business focused on bottom-line profit. This is a crucial strategic distinction that must be clear before any optimization is performed.
+
+Lectures 7 & 8: An Introduction to Operations Research and Linear Programming
+In our final sessions, we introduced a powerful new field of prescriptive analytics: Operations Research (OR), specifically focusing on Linear Programming (LP). OR provides methods for making optimal decisions under constraints.
+
+We learned to formulate a business problem as an LP model, defining:
+
+Decision Variables: The quantities we want to determine (e.g., how many hatchback cars to produce).
+
+Objective Function: The goal we want to achieve (e.g., maximize revenue).
+
+Constraints: The limitations we face (e.g., a finite amount of available resources).
+
+We explored the powerful concept of duality, where every LP problem (the primal) has a mirror-image problem (the dual). The dual provides a valuable economic interpretation, with its variables representing the shadow price or marginal value of the resources in the primal problem.
+
+To conclude, we demonstrated how to solve these LP problems in practice, using both the Solver add-in in Excel and the pulp library in Python, bridging the gap between theoretical formulation and practical implementation.
+
+This concludes our intensive week. We have added transformation techniques, optimization, and the entire field of linear programming to our analytical toolkit.

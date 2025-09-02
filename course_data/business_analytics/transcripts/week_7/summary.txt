@@ -1,0 +1,61 @@
+Good morning, everyone.
+
+This week, we shifted our focus from predicting continuous variables to a new, powerful technique for predicting categorical outcomes. We tackled a very relevant question: can we predict whether a student will get a job? This led us into the world of Logistic Regression, a fundamental tool for classification problems.
+
+Here is a summary of our journey this week.
+
+Lecture 1: The Business Problem - Predicting Job Placement
+We began with a relatable scenario: predicting the placement success of MBA students. We identified several potential explanatory variables, or student attributes, that could influence this outcome:
+
+Academic performance in their MBA program (MBA CGPA).
+
+Academic performance in their undergraduate degree (UG CGPA).
+
+Prior industry experience.
+
+Participation in extracurricular activities.
+
+The critical distinction from our previous work is that the response variable—whether a student gets a job—is binary (Yes/No), which we coded as 1 and 0. This categorical outcome means that a standard Multiple Linear Regression model is not appropriate.
+
+Lecture 2 & 3: Introduction to Logistic Regression
+Because our response variable is binary, we can't directly model the outcome. Instead, we model the probability of the outcome. However, even modeling probability directly is limiting, as it's constrained between 0 and 1.
+
+To overcome this, we introduced two key transformations:
+
+Odds: The ratio of the probability of an event happening to the probability of it not happening (P(Y=1) / P(Y=0)).
+
+Log-Odds (or Logit): Taking the natural logarithm of the odds. This transformation allows our response variable to range from negative to positive infinity, making it suitable for a linear model structure.
+
+This led us to the core equation for logistic regression:
+log(odds) = β₀ + β₁X₁ + β₂X₂ + ...
+
+Unlike linear regression, which minimizes the sum of squared errors, logistic regression works by maximizing the log-likelihood—essentially, finding the beta coefficients that maximize the log of the probability of our model making correct predictions. I then walked you through the mechanics of setting this up in Excel, from calculating the log-odds to using the Solver to find the optimal beta values that maximized our objective function.
+
+Lecture 4: Evaluating the Model's Performance
+With a model built and predictions made, we needed to evaluate its performance. We moved beyond simple R-squared and introduced three critical classification metrics based on a confusion matrix:
+
+Accuracy: The overall proportion of correct predictions (both true positives and true negatives). It answers the question: "Out of all predictions, how many did the model get right?".
+
+Precision: Out of all the times the model predicted "Yes" (Y=1), what proportion were actually "Yes"? It's a measure of the reliability of a positive prediction.
+
+Recall (or Sensitivity): Out of all the actual "Yes" cases, what proportion did the model correctly identify? It's a measure of the model's ability to find all the positive cases.
+
+We observed the classic trade-off: precision and recall often move in opposite directions. Adjusting the probability threshold (the cutoff for classifying a prediction as 1 or 0) allows us to balance these two metrics based on the specific business need.
+
+Lecture 5: Interpreting the Results
+Interpreting the coefficients (betas) in logistic regression is different from linear regression. A beta does not represent a change in the response variable itself, but rather a change in the log-odds.
+
+For our B-school example, the coefficient for MBA CGPA was 3.27. The interpretation is: for a one-unit increase in a student's MBA CGPA, the log-odds of getting placed increase by 3.27. More intuitively, this means the odds of getting placed are multiplied by a factor of e^(3.27), which is approximately 26.31.
+
+Lecture 6: A Large-Scale Python Implementation
+To conclude the week, we moved from our small, illustrative dataset in Excel to a large, real-world dataset in Python. We built a logistic regression model to predict whether a customer would accept a car loan, using a dataset with over 145,000 observations.
+
+This tutorial reinforced the entire process on a practical scale:
+
+Data preparation and splitting the data into training and testing sets.
+
+Building the model using the sklearn library.
+
+Evaluating the model using a confusion matrix and a classification report, which conveniently calculates accuracy, precision, and recall for us.
+
+This practical application demonstrated why we need powerful tools like Python for modern data science, as tasks that are manual and slow in Excel become efficient and scalable. That concludes our week on logistic regression. You now have a foundational understanding of one of the most widely used classification algorithms in business analytics.

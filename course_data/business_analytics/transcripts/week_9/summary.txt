@@ -1,0 +1,35 @@
+Good morning, class.
+
+This week, we concluded our exploration of Data Envelopment Analysis (DEA) by focusing on its practical application and, most importantly, its prescriptive power. We moved beyond simply identifying efficient and inefficient units to providing concrete, data-driven recommendations for improvement.
+
+Here is a summary of our final sessions on efficiency.
+
+Lectures 1 & 2: Formulating DEA for Complex Scenarios
+Building on last week's foundation, we tackled more realistic scenarios. We formulated the full Linear Programming (LP) problem for cases with multiple inputs and outputs, which cannot be easily visualized graphically.
+
+Two Outputs, One Input: We examined a case where sales offices had a single, fixed input (a budget of ₹2 lakhs) but were responsible for two outputs: sales achieved and potential leads generated.
+
+Two Inputs, Two Outputs: We then moved to a more general case with two inputs (budget and team size) and two outputs (sales and leads).
+
+For each case, we meticulously constructed the LP problem for a specific Decision-Making Unit (DMU). The objective remained to maximize its own weighted output, subject to two key constraints:
+
+The DMU's own weighted input must be normalized to 1.
+
+Using the DMU's chosen weights, no other unit in the sample can have an efficiency score greater than 1.
+
+By solving these LPs, we saw how a DMU, to present itself in the best light, might strategically assign a weight of zero to an output where it performs poorly. Despite this, the final objective function value reliably identified efficient (score = 1) and inefficient (score < 1) units.
+
+Lectures 3 & 4: From Identification to Prescription
+The true power of DEA lies not just in identifying inefficiency but in prescribing a path toward efficiency. In our final sessions, we focused on the inefficient DMUs.
+
+The goal is to move an inefficient unit to a point on the efficiency frontier. This target point is called a Hypothetical Composite Unit (HCU). The HCU is "composite" because its position is a weighted combination of the efficient "reference units" that define its segment of the frontier.
+
+We learned how to calculate the exact coordinates of the HCU using the dual variables (or shadow prices) from the inefficient DMU's LP solution. These dual variables tell us which efficient units serve as the reference set and what weights to use in the combination.
+
+For Input-Oriented Models: We saw that an inefficient unit could become efficient by reducing its inputs. For example, we prescribed that Sales Office 1 should reduce its budget from ₹300,000 to approximately ₹237,540 and its team size from 13 to 10.3 to reach its HCU.
+
+For Output-Oriented Models: Here, the prescription was to increase outputs. We determined that Sales Office 1 needed to increase its sales from ~₹11 lakhs to ~₹16 lakhs and its generated leads from 15 to about 22 to become efficient.
+
+A key technical point we noted was that for output-oriented models, the raw dual variables must be scaled by dividing by the efficiency score before they can be used as weights for calculating the HCU's coordinates.
+
+This concluded our course on DEA. You are now equipped with a sophisticated analytical technique to measure relative efficiency and provide actionable, quantitative recommendations for performance improvement.

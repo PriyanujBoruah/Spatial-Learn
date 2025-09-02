@@ -1,0 +1,43 @@
+Good morning, everyone.
+
+This week, we took a deep dive into the practical application of conjoint analysis, moving from the conceptual framework we discussed last week to the specific mathematical models used to decode consumer preferences. We explored two distinct, powerful approaches: one rooted in optimization and the other in statistics.
+
+Here is a summary of our lectures.
+
+Lectures 1 & 2: The Optimization Approach (LINMAP)
+We began by examining a classic optimization method for conjoint analysis known as LINMAP, which stands for Linear Programming for Multidimensional Analysis of Perceptions. This approach is particularly well-suited for scenarios where you have continuous attribute data and have collected consumer preferences through pairwise comparisons.
+
+The core of the LINMAP formulation is to solve for two key unknowns:
+
+The weights (W) that a consumer assigns to each product attribute, signifying their importance.
+
+The coordinates of the ideal point (X), which represents the consumer's most preferred, perfect product in the multi-attribute space.
+
+We walked through the entire process of formulating this as a Linear Programming (LP) problem. We defined parameters based on the attribute data and consumer choices and set up the objective function to minimize the "poorness of fit"—essentially, minimizing the number of times our solution violates the consumer's stated pairwise preferences.
+
+I then demonstrated a full numerical example in Excel, showing you how to:
+
+Calculate the necessary parameters (ajkp and bjkp) from the raw data.
+
+Set up the decision variables (W's, V's, and Z's) and constraints in the Solver.
+
+Interpret the solution to find the attribute weights and the coordinates of the ideal product. For instance, our example showed that the consumer valued attribute two 46% more than attribute one.
+
+Lectures 3 & 4: The Statistical Approach (Multiple Linear Regression)
+Next, we turned to the most traditional and widely used method for conjoint analysis: Multiple Linear Regression (MLR). This approach is ideal when you have categorical attribute data and have collected consumer preferences as ratings for each product profile.
+
+In this model:
+
+The consumer's rating for each product becomes our dependent variable (Y).
+
+The product attributes become our explanatory variables (X's).
+
+A key step in this process is correctly coding the categorical attribute levels into numerical binary (or "dummy") variables. To avoid multicollinearity, we established a rule: for an attribute with 'k' levels, we create 'k-1' dummy variables, with the omitted level serving as the base level for comparison.
+
+After running the regression, we learned to interpret the beta coefficients in a special way for conjoint analysis. They represent "part-worths" or "level utilities"—the incremental utility a consumer derives from a specific attribute level relative to the base level. By analyzing these part-worths, we can:
+
+Determine the relative importance of each attribute by comparing the range of part-worths across the attribute's levels. In our mobile phone example, the camera resolution was the most important attribute (53% importance), while brand was the least important (20% importance).
+
+Identify the most preferred level for each attribute, which allows us to construct the consumer's ideal product.
+
+This concludes our week. You should now be familiar with two distinct methodologies for conducting conjoint analysis, each suited to different types of data, and understand how to translate the mathematical output into actionable business insights about consumer value systems.

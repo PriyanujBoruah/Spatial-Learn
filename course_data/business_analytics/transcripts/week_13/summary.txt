@@ -1,0 +1,40 @@
+Good morning, class.
+
+This week, we revisited a fundamental statistical tool for hypothesis testing: the Chi-Squared Goodness-of-Fit Test. We explored how to use this test not just in theory, but as a practical, step-by-step method for determining if a sample of business data truly comes from a hypothesized population distribution. We used Python to bring these concepts to life.
+
+Here is a summary of our week.
+
+Lecture 1: The Chi-Squared Goodness-of-Fit Test: A Primer
+We started by outlining the purpose of the Chi-Squared Goodness-of-Fit test: to determine if a hypothesized distribution is a good fit for a given population. The core of the test lies in comparing observed frequencies (what's actually in our sample data) with expected frequencies (what we would theoretically expect to see if our hypothesized distribution were correct).
+
+We established the process:
+
+Calculate the Chi-Squared test statistic, which quantifies the total difference between observed and expected frequencies across all categories or "bins".
+
+Make a conclusion by either comparing the calculated p-value to a significance level (alpha) or by comparing the calculated test statistic to a tabulated value from the Chi-Squared distribution, taking into account the correct degrees of freedom (k - p - 1, where k is the number of bins and p is the number of parameters estimated from the sample).
+
+This purely statistical framework sets the stage for real-world application, where we aren't given a neat frequency table but a raw dataset.
+
+Lecture 2 & 4: Application to a Continuous Distribution (Uniform)
+Our first practical tutorial involved testing if a dataset (representing the length of scratches on a car) followed a Uniform distribution. We followed a systematic, four-step approach in Python:
+
+Descriptive Statistics & Visualization: We began by plotting a histogram and calculating descriptive stats. The multiple peaks and low standard deviation gave us our first clue that the distribution might be uniform rather than normal.
+
+Visual Confirmation: We used Q-Q plots (to check the tails) and P-P plots (to check the center) to visually confirm our hypothesis. In both plots, the data points fell very close to the 45-degree line, strongly suggesting a uniform fit.
+
+Frequency Table Creation: For a continuous distribution, we created bins of equal length and counted the number of observed values falling into each bin. For a uniform distribution, the expected frequency is simply the mean of the observed frequencies across all bins.
+
+Hypothesis Test: We ran the Chi-Squared test, which yielded a very high p-value (0.694). Since this was much greater than our alpha of 0.05, we concluded that we do not reject the null hypothesis, confirming that the data does indeed follow a uniform distribution.
+
+Lecture 3 & 5: Application to a Discrete Distribution (Poisson)
+Our second tutorial demonstrated the nuances of applying the test to a discrete distribution, using a dataset of product defects, a classic Poisson scenario.
+
+Descriptive Statistics: Here, the key clue came from the descriptive statistics. The mean (4.9) and variance (5.6) were very close to each other, a hallmark of the Poisson distribution.
+
+Frequency Table Creation: The critical difference for a discrete distribution is that we do not create artificial bins. Instead, we count the occurrences of each discrete value (e.g., how many times we observed 3 defects, 4 defects, etc.).
+
+Calculating Expected Frequency: The expected frequency for each value was calculated using the Poisson Probability Mass Function (PMF), multiplied by the total number of observations.
+
+Hypothesis Test: After addressing a technicality to ensure the sum of expected frequencies matched the total observations, we performed the test. The resulting high p-value (0.8) led us to, once again, not reject the null hypothesis, confirming that the number of defects follows a Poisson distribution.
+
+This concluded our week. You are now equipped with a robust methodology to take a raw dataset, form an educated guess about its underlying distribution using visual and descriptive tools, and then formally test that hypothesis with statistical rigor using the Chi-Squared Goodness-of-Fit test.

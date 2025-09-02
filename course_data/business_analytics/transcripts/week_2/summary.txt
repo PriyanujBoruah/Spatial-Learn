@@ -1,0 +1,65 @@
+Good morning, everyone. I hope you've all had a chance to digest the material from last week.
+
+This week, we moved from the visual representation of data to the mathematical, diving into the crucial topic of probability distributions. We explored how to take a raw dataset and determine the underlying theoretical distribution that best describes it—a fundamental skill for any form of business analytics or simulation.
+
+Here's a recap of our journey this week.
+
+Lecture 1: To Fit or Not to Fit?
+We began by asking a fundamental question: when you have business data, what should you do with it? We outlined three primary approaches:
+
+Trace-Driven Simulation: Use the raw data directly in your models. This is straightforward but has a major drawback: your model is only tested against the specific scenarios present in your collected data.
+
+Fit a Theoretical Distribution: This is the preferred method. By fitting a known distribution (like Normal, Exponential, etc.), you can generate a much wider range of values for your simulations, allowing you to test your models under more varied conditions.
+
+Build an Empirical Distribution: If no theoretical distribution fits well, you can build a custom distribution directly from your data. However, this approach shares some of the limitations of trace-driven simulation, as it's heavily constrained by the range of your observed data.
+
+Lecture 2: The Art of the Educated Guess
+Before we can formally test a distribution, we must first make an educated guess. I presented you with a dataset of 217 values, withholding the context to force a focus on the data's properties. We learned to look for clues in:
+
+Summary Statistics: We observed that when the mean, median, and mode are different, the distribution is not symmetric, ruling out distributions like the Normal or Uniform.
+
+Skewness: A positive skewness value (our data had a skewness of 1.46) indicates a "right-skewed" distribution, where the right tail is longer than the left. This pointed us toward distributions like the Exponential.
+
+Coefficient of Variation (CV): We calculated the CV (Standard Deviation / Mean) and found it was close to 1. This is a strong indicator of an Exponential distribution, for which the CV is always 1.
+
+Visuals: We used box plots and bar charts, which confirmed the right skew we saw in the statistics.
+
+Finally, I revealed the context: the data represented the time taken for service at a bank. The context of "time" often aligns well with an Exponential distribution, reinforcing our data-driven guess.
+
+Lecture 3: Checking the Fit
+Guessing is not enough; we must verify. This lecture introduced the concept of Goodness-of-Fit tests. We focused on two powerful visual tools:
+
+Q-Q (Quantile-Quantile) Plots: These plots compare the quantiles of your sample data against the theoretical quantiles of your chosen distribution. If the fit is good, the points will align closely with a 45-degree line. Q-Q plots are particularly good at highlighting differences in the tails of the distributions.
+
+P-P (Probability-Probability) Plots: These plots are similar but compare the cumulative probabilities instead of quantiles. They are better at highlighting differences in the middle portion of a distribution.
+
+We saw that when we plotted our data against a Normal distribution, the points deviated significantly from the line. However, when plotted against an Exponential distribution, the fit was remarkably close, giving us strong visual confirmation of our guess.
+
+Lectures 4, 5, & 6: Hands-On Tutorials
+The rest of the week was dedicated to hands-on tutorials where we applied this systematic process to three different datasets, using Python to perform our analysis.
+
+Tutorial 1: Poisson Distribution: Our first dataset was an example of discrete count data.
+
+Clue: The mean (4.94) and variance (5.66) were very close, a classic hallmark of the Poisson distribution.
+
+Confirmation: The P-P plot showed a poor fit against the default Normal distribution but an excellent fit when we specified a Poisson distribution.
+
+Final Test: We performed a Chi-square goodness-of-fit test, which yielded a very high p-value (0.63). This led us to not reject the null hypothesis, formally confirming that the data follows a Poisson distribution.
+
+Tutorial 2: Normal Distribution: Our second dataset looked much more symmetric.
+
+Clue: The histogram showed a central peak, and the mean (56.95) and median (56) were nearly identical. The skewness was also very low (0.37). These clues strongly suggested a Normal distribution.
+
+Confirmation: The Q-Q and P-P plots showed an almost perfect fit against the normal line.
+
+Final Test: The Chi-square test resulted in an extremely high p-value of 0.99, and the calculated test statistic (1.0) was much lower than the tabulated value (7.8), providing overwhelming evidence for the Normal distribution.
+
+Tutorial 3: Uniform Distribution: The final dataset presented a different shape.
+
+Clue: The histogram was relatively flat, and the descriptive statistics showed a very low standard deviation (2.65) and an even spread of data across the quantiles. This pointed towards a Uniform distribution.
+
+Confirmation: The Q-Q and P-P plots, when compared against a uniform distribution, showed a near-perfect straight line.
+
+Final Test: The Chi-square test gave a massive p-value (0.9999), confirming our guess with a high degree of confidence.
+
+This concludes our week on distributions. The key takeaway is that identifying the correct distribution is a methodical process: start with visual and statistical clues to form a hypothesis, use probability plots for visual confirmation, and finally, employ a formal statistical test to prove your case.

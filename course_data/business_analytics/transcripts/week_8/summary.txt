@@ -1,0 +1,43 @@
+Good morning, class.
+
+This week, we explored the critical concept of productive efficiency. We moved beyond simplistic single-ratio measures to a powerful, comprehensive framework called Data Envelopment Analysis (DEA), which allows us to fairly compare the performance of various economic units, even when they use multiple inputs to produce multiple outputs.
+
+Here's a recap of our discussions.
+
+Lecture 1: The Challenge of Measuring Efficiency
+We began by defining productive efficiency as the ratio of outputs to inputs. While this seems simple, we quickly saw the complexity. In the real world, an economic unit—be it a factory, a hospital, or even a single person—rarely has just one input and one output. For example, a business uses a mix of inputs like labor, capital, and infrastructure to produce a mix of outputs like sales, profit, and customer acquisition.
+
+Simple operating or financial ratios, like "sales per square foot" or "earnings per share," are inadequate because they are selective and often fail to capture the full picture of operational performance. This challenge set the stage for needing a more robust, multi-factor approach.
+
+Lecture 2: Visualizing Efficiency with DEA Frontiers
+We introduced Data Envelopment Analysis (DEA) through a graphical lens. By plotting the performance of several sales offices, we could visualize the concept of an efficiency frontier.
+
+Input-Oriented View: With two inputs (e.g., budget and team size) and a single, constant output, we plotted the input usage of each office. The most efficient offices were those that used the least amount of resources to achieve the same target. These units formed an "envelope" or frontier, and any office lying outside this frontier was deemed inefficient.
+
+Output-Oriented View: Conversely, with a single, constant input (e.g., a fixed budget) and two outputs (e.g., sales and potential leads), we plotted the output levels. Here, the frontier was formed by the offices that generated the most output for the same level of input.
+
+This graphical method provided a powerful intuition for what it means to be "efficient" in a relative sense.
+
+Lecture 3: The Analytical Framework of DEA
+We then moved from pictures to mathematics, formalizing the DEA model. The core challenge of multiple inputs and outputs is that they are often in different units and cannot be simply added up.
+
+DEA solves this by introducing a brilliant concept:
+
+Weighted Ratios: Instead of a simple output/input ratio, we calculate a ratio of weighted outputs to weighted inputs.
+
+Self-Evaluation: Here is the key insight. DEA allows each Decision-Making Unit (DMU) to choose its own set of input and output weights. The objective for each DMU is to pick the weights that maximize its own efficiency score. You get to present yourself in the best possible light.
+
+However, this freedom is not absolute. It is subject to a crucial constraint: using the weights you have chosen for yourself, no other DMU in the set can have an efficiency score greater than 1.
+
+This non-linear optimization problem is then cleverly linearized by setting the weighted input to 1 and maximizing the weighted output, making it solvable as a Linear Programming problem.
+
+Lecture 4: Practical Application - Solving DEA with Linear Programming
+In our final session, we put it all together. We took our sales office example and formulated the specific Linear Programming (LP) problem for each DMU. I walked you through the Excel Solver setup, demonstrating how to define the objective function (maximize weighted output), the decision variables (the weights), and the constraints for each sales office's unique optimization problem.
+
+The results of solving these LPs perfectly matched our graphical intuition:
+
+The DMUs that were on the frontier (offices 2, 3, and 5) were able to achieve a maximum efficiency score of 1, proving they are relatively efficient.
+
+The DMUs inside the envelope (offices 1 and 4) could not achieve a score of 1, even when choosing their own best weights. Their scores of 0.79 and 0.84, respectively, identified them as inefficient.
+
+This concluded our deep dive into efficiency. You now have a powerful, analytical method to move beyond simple ratios and conduct a fair and comprehensive assessment of the relative performance of any set of decision-making units.

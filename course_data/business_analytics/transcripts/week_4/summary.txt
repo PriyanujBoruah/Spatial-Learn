@@ -1,0 +1,60 @@
+Good morning, everyone.
+
+This week, we transitioned from statistical inference to a core business application: pricing. We explored the fundamental relationship between the price a retailer sets and the demand that materializes in the market. Our goal was to understand, model, and ultimately estimate this relationship to make better pricing decisions.
+
+Here is a summary of our lectures for the week.
+
+Lecture 1: Introducing the Demand Response Curve
+We began our week by introducing the central concept: the Demand Response Curve. This curve graphically represents the relationship between the price of a product (on the x-axis) and the quantity demanded by the market (on the y-axis).
+
+We established four essential properties of a typical demand response curve:
+
+Non-negativity: Both price and demand are positive values.
+
+Continuity and Differentiability: The curve is smooth, without breaks, allowing us to analyze changes at any point.
+
+Downward Sloping: For most goods, as the price increases, the demand decreases.
+
+We also distinguished between two primary objectives a retailer might have when setting a price: maximizing revenue versus maximizing profit, noting that the optimal price can differ significantly depending on the goal.
+
+Lecture 2: Measuring Price Sensitivity
+How do we measure the market's reaction to price changes? We discussed two key metrics:
+
+Slope: This is the simple change in demand for a given change in price. It provides a straightforward, local measure of sensitivity.
+
+Elasticity: This is a more nuanced, unit-less measure that captures the percentage change in demand for a percentage change in price.
+
+We learned that elasticity is not universal; it varies dramatically based on the type of product (e.g., essential goods like salt are inelastic, while luxuries like holidays are elastic) and the time frame (e.g., emergency air travel has low short-term elasticity but high long-term elasticity).
+
+Lecture 3: Modeling the Price-Demand Relationship
+With the concept of price sensitivity established, we explored two common mathematical models for the demand response curve:
+
+Linear Demand Response Curve: The simplest model, represented by the equation D = D0 - m*p. We defined D0 as the market size (the demand when the price is zero) and identified the satiating price (the price at which demand drops to zero). A key insight here is that for a linear curve, elasticity is not constant; it changes depending on the price point.
+
+Constant Elasticity Curve: A non-linear model for situations where we assume elasticity remains constant regardless of the price. This curve is defined by D = C * p^(-ε), where ε is the constant elasticity. This model is often more realistic but comes with the caveat that demand may never be satiated, even at very high prices.
+
+Lecture 4 & 5: Estimating the Curve with Simple Linear Regression (SLR)
+This is where the analytics truly began. How do we estimate the parameters of our demand curve from real data? The primary tool we introduced is Simple Linear Regression (SLR).
+
+We treated price as our explanatory variable (X) and demand as our dependent variable (Y). Using a sample dataset, I walked you through a complete regression analysis in Excel. We learned to interpret the key components of the regression output:
+
+Coefficients: The intercept gives us an estimate of the market size (D0), and the slope coefficient estimates our 'm' value.
+
+R-squared: This value, the "coefficient of determination," tells us the proportion of variability in demand that is explained by the price. For our data, this was about 73%.
+
+ANOVA Table: We used the F-test and its associated p-value to check the overall significance of our model. A very low p-value confirmed that our model was statistically significant.
+
+t-tests: These allowed us to test the significance of our individual coefficients (both the intercept and the slope).
+
+Lecture 6: Building the Model in Python
+To round out the week, we replicated our analysis in a Python environment using a Jupyter notebook. This practical tutorial demonstrated how to use essential data science libraries:
+
+Pandas for data handling.
+
+Matplotlib for creating our initial scatter plot to visually inspect the linear relationship.
+
+Scikit-learn to fit the linear regression model.
+
+We saw how to extract the same key outputs—coefficients and R-squared value—that we found in Excel. We also briefly touched on more advanced concepts like data transformation and the importance of splitting data into training and testing sets for robust model validation.
+
+That concludes our week on demand modeling. You now have a comprehensive framework for taking price and demand data, estimating the relationship between them, and evaluating the statistical significance of your model.

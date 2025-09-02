@@ -1,0 +1,35 @@
+Good morning, class.
+
+This week, we ventured into the fascinating intersection of marketing, psychology, and quantitative analysis by studying Consumer Choice Models. Our focus was on a powerful set of techniques known as Conjoint Analysis, which allows us to mathematically model a consumer's decision-making process and peek into their value system. 🧐
+
+Here is a summary of our discussions.
+
+Lectures 1 & 2: Understanding Consumer Preferences with Conjoint Analysis
+We began by establishing the core challenge for any marketer: understanding why a consumer makes a particular choice. A product isn't a single entity but a bundle of features or attributes (e.g., a car's engine size, color, brand, and safety features). Conjoint analysis provides a structured way to answer two fundamental questions:
+
+How important is each attribute to the consumer? (e.g., do they prioritize engine power over seating capacity?).
+
+What would the consumer's ideal product look like if they could design it themselves?.
+
+This is a non-trivial task because consumers evaluate products as a whole rather than assessing each attribute in isolation. Conjoint analysis, which means "considered jointly," is designed specifically for this purpose. We explored several forms of this technique, including choice-based, adaptive, and full-profile analysis, each with applications in marketing strategy, product development, and, crucially, in determining a consumer's Willingness To Pay (WTP) for specific features.
+
+Lectures 3, 4, & 5: The Optimization Approach - Finding the "Ideal Point"
+In the second half of the week, we delved into the mathematical engine behind conjoint analysis, focusing on a linear programming method known as LINMAP.
+
+The core idea is geometric and intuitive:
+
+We represent each product variant as a point in a multi-attribute space.
+
+We assume that each consumer has an "ideal point" in this same space—the coordinates of their most preferred, perfect product.
+
+When a consumer expresses a preference for one product over another (e.g., they prefer Option 1 over Option 3), they are implicitly telling us that Option 1 is closer to their ideal point than Option 3 is.
+
+The consumer provides us with their pairwise preferences (e.g., "I prefer 2 over 3," "I prefer 2 over 4"), and our model uses this information to solve for two sets of unknowns:
+
+The coordinates of the ideal point (X).
+
+The weights (W) the consumer assigns to each attribute, which we incorporate by using a weighted Euclidean distance measure.
+
+This entire process is formulated as a Linear Programming problem. The objective is to find the ideal point and weights that minimize the "poorness of fit"—a measure of how many times our solution violates the consumer's stated preferences. By solving this optimization problem, we can reverse-engineer the consumer's value system, giving us a quantitative map of their desires.
+
+This concludes our week on conjoint analysis. You now have a foundational understanding of how to transform qualitative consumer choices into a quantitative model that can guide product design, pricing, and marketing strategy.

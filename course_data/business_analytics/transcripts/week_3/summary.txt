@@ -1,0 +1,46 @@
+Good morning, class.
+
+This week, we ventured into a critical area of data analysis: understanding the association between categorical variables. Unlike quantitative variables where we can use measures like correlation, categorical data requires a different toolkit. We learned how to move from simply observing a relationship in a sample to making a statistically sound inference about the entire population.
+
+Here is a summary of our discussions.
+
+Lecture 1 & 2: Conditional Probability and Bayes' Rule
+We began with the foundational tools for determining association: joint, marginal, and conditional probabilities.
+
+Joint Probability: The probability of two events happening together (e.g., a candidate being male AND getting admitted).
+
+Marginal Probability: The simple probability of a single event (e.g., a candidate being male).
+
+Conditional Probability: The probability of one event happening given that another event has already occurred. This is the key to uncovering associations.
+
+We used a (hypothetical) B-school admissions dataset to illustrate this. By comparing the conditional probability of admission for male candidates (30%) versus female candidates (15%), we could determine that, within our sample, an association between gender and admission status appeared to exist.
+
+Building on this, we introduced Baye's Rule, a powerful formula for updating our beliefs in light of new evidence. We framed this as a process:
+
+Prior Probability: Our initial belief about an event before we have new data. In our manufacturing example, this was the knowledge that Supplier S1 provides 65% of our raw materials.
+
+New Information: We collect additional data, such as an inspection finding a batch of raw materials to be of "bad quality".
+
+Posterior Probability: We use Baye's Rule to calculate an updated probability. We found that despite Supplier S2 having a lower prior probability of being the source (35%), the posterior probability of them being the culprit for a "bad quality" batch was actually higher (57.4%) than for Supplier S1 (42.6%). This shows how new data can, and should, change our initial assumptions.
+
+Lecture 3: Inferring Association with the Chi-Square Test
+Observing an association in a sample is one thing, but can we generalize it to the entire population? To answer this, we need a formal statistical test. We introduced the Chi-Square Test of Independence, a cornerstone for analyzing categorical data.
+
+The process involves testing a hypothesis:
+
+Null Hypothesis (H₀): The two categorical variables are independent (no association exists).
+
+Alternative Hypothesis (H₁): The two variables are not independent (an association exists).
+
+To test this, we compare the observed frequencies (what we actually saw in our data) with the expected frequencies (what we would expect to see if the null hypothesis were true). The difference between these two is captured in the Chi-Square test statistic.
+
+A large Chi-Square value suggests that our observed data is far from what we'd expect under independence, giving us evidence to reject the null hypothesis. We saw in our brand preference example that the calculated statistic (7.009) was greater than the critical value from the table (5.99) at a 95% confidence level, leading us to conclude that brand preference and city are indeed associated.
+
+Lecture 4 & 5: Practical Implementation in Python and Spreadsheets
+Finally, we brought theory into practice. We walked through step-by-step tutorials on how to implement the Chi-Square test of independence using modern data analysis tools.
+
+In Python, we used the pandas library to create a contingency table (crosstab) and the scipy.stats package to directly perform the test, which conveniently gives us the Chi-Square value, the p-value, and the degrees of freedom in a single command.
+
+In Spreadsheets (Excel and Google Sheets), we demonstrated both the manual calculation—building the observed and expected frequency tables—and the direct use of built-in functions like CHISQ.TEST to quickly find the p-value.
+
+This concluded our week. The crucial lesson is the distinction between determining an association in a sample using tools like conditional probability and inferring that the association holds for the population using a rigorous statistical method like the Chi-Square test.

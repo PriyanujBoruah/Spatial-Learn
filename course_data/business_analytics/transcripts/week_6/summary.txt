@@ -1,0 +1,38 @@
+Good morning, class.
+
+This week, we took the logical next step from our previous discussions and graduated from Simple Linear Regression to the more powerful and realistic technique of Multiple Linear Regression (MLR). We explored how to model a response variable using several explanatory variables simultaneously and, crucially, how to navigate the complexities that arise when those explanatory variables are not independent of each other.
+
+Here’s a summary of what we covered.
+
+Lecture 1 & 2: From Simple to Multiple Regression
+We began by formally defining the Multiple Regression Model, an extension of the simple model we're already familiar with. The key difference is the inclusion of multiple explanatory variables (X₁, X₂, ..., Xₖ), each with its own coefficient (β₁, β₂, ..., βₖ).
+
+A critical new concept we introduced was the distinction between slopes:
+
+Marginal Slope: This is the slope from a simple linear regression, representing the total effect of one explanatory variable on the response variable.
+
+Partial Slope: This is the coefficient of a variable in a multiple regression model. It represents the change in the response variable for a one-unit change in that explanatory variable, while holding all other explanatory variables constant.
+
+We also saw the introduction of Adjusted R-squared, a more conservative metric than the standard R-squared because it accounts for the number of explanatory variables in the model, providing a more realistic measure of explanatory power.
+
+Using our (hypothetical) B-school admissions data, we first ran separate simple regressions to confirm that both "entrance exam score" and "interview score" were individually significant predictors of a student's GPA.
+
+Lecture 3 & 4: Unpacking Collinearity with Path Diagrams and VIF
+The real challenge of MLR arises when explanatory variables are correlated with each other, a situation known as collinearity or multicollinearity. We found that our entrance exam and interview scores were indeed correlated (r = 0.54).
+
+To understand the impact of this, we used a Path Diagram. This visual tool helped us separate the direct effect of a variable on the response from its indirect effect, which occurs when one explanatory variable influences another, which in turn influences the response. We demonstrated mathematically that the total effect (the marginal slope from SLR) is the sum of the direct effect and the indirect effect.
+
+We then introduced a quantitative measure for this phenomenon: the Variance Inflation Factor (VIF). VIF measures how much the variance of an estimated regression coefficient is "inflated" because of collinearity. A high VIF indicates that the standard error of a coefficient is being artificially increased, which can lead to a lower t-statistic and potentially cause a genuinely significant variable to appear insignificant.
+
+Lecture 5 & 6: An Extreme Case and Python Implementation
+To drive the point home, we looked at an extreme example of predicting apartment prices using area, number of bedrooms, and number of parking lots. Individually, each variable was a significant predictor of price. However, when combined in an MLR model, their high correlation caused their partial slopes to become statistically insignificant, even though the overall model was significant. This is a classic symptom of multicollinearity. We discussed remedies, such as removing redundant variables or combining correlated variables into a single new one.
+
+Finally, we put everything into practice by implementing our GPA model in Python. Using the statsmodels and sklearn libraries, we demonstrated how to:
+
+Build and fit an MLR model.
+
+Interpret the summary output, which provides coefficients, p-values, and R-squared values.
+
+Calculate the Variance Inflation Factor for each variable to diagnose multicollinearity.
+
+This concludes our week. You should now understand not just how to build a multiple regression model, but also how to critically evaluate it, diagnose potential problems like multicollinearity, and interpret its results with the necessary nuance.
